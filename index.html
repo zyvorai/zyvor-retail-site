@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zyvor Retail · Every store. Every detail. One place.</title>
+<meta name="description" content="Zyvor Retail is Zyvor AI Labs' retail application: point of sale, stock ledger with batches and expiry, purchasing, a pickup storefront and double-entry bookkeeping for a company with many stores. Runs with no packages and no cloud. Pilot release; synthetic data only.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://zyvorai.github.io/zyvor-retail-site/">
+<link rel="icon" href="assets/mark-light.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zyvor Retail">
+<meta property="og:title" content="Zyvor Retail · Every store. Every detail. One place.">
+<meta property="og:description" content="POS, stock, purchasing, pickup storefront and bookkeeping for multi-store retail. No packages, no cloud.">
+<meta property="og:url" content="https://zyvorai.github.io/zyvor-retail-site/">
+<meta property="og:image" content="https://zyvorai.github.io/zyvor-retail-site/assets/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zyvor Retail: every store, every detail, one place">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zyvor Retail · Every store. Every detail. One place.">
+<meta name="twitter:description" content="POS, stock, purchasing, pickup storefront and bookkeeping for multi-store retail.">
+<meta name="twitter:image" content="https://zyvorai.github.io/zyvor-retail-site/assets/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zyvor Retail","applicationCategory":"BusinessApplication","operatingSystem":"Linux, macOS, containers, Kubernetes","description":"Retail application for a company with several stores: point of sale, batch and expiry stock ledger, purchasing, customers, loyalty, pickup storefront and double-entry bookkeeping.","publisher":{"@type":"Organization","name":"Zyvor AI Labs"},"url":"https://zyvorai.github.io/zyvor-retail-site/"}</script>
+<script src="theme.js"></script>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="#top" aria-label="Zyvor Retail home">
+    <img class="logo only-light" src="assets/mark-light.svg" alt="" width="32" height="32"><img class="logo only-dark" src="assets/mark-dark.svg" alt="" width="32" height="32">
+    <span>RETAIL</span>
+  </a>
+  <nav id="sections" aria-label="Sections">
+    <a href="#see">See it</a><a href="#modules">Modules</a><a href="#books">Books</a><a href="#security">Security</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a>
+  </nav>
+  <div class="bar-actions">
+    <a class="btn small" href="#install">Run it</a>
+    <button id="theme" class="icon" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <p class="kicker">Zyvor AI Labs · Retail</p>
+  <h1>Every store. Every detail. <em>One place.</em></h1>
+  <p class="lede"><strong>Sell at the counter, count the shelf, pay the supplier and close the books</strong> from one calm console. Built for a company that runs several stores.</p>
+  <div class="cta"><a class="btn primary" href="#install">Run it in two minutes</a><a class="btn" href="#see">See the screens</a><a class="btn" href="mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot">Ask about a pilot</a></div>
+  <ul class="chips" aria-label="Status">
+    <li class="ok">Runs with no packages</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.3.0</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
+  </ul>
+  <div class="window" role="group" aria-label="A screenshot of the Zyvor Retail overview (synthetic data)"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <img class="only-light" src="shots/light-overview.jpg" alt="Zyvor Retail overview: net revenue, gross profit, inventory value and replenishment, with quick actions (synthetic data)" width="1440" height="900" fetchpriority="high" decoding="async"><img class="only-dark" src="shots/dark-overview.jpg" alt="Zyvor Retail overview in dark mode (synthetic data)" width="1440" height="900" loading="lazy" decoding="async"></div>
+  <p class="foot">Screenshot of the running application with a fictional catalogue.</p>
+</section>
+
+<section class="band" aria-label="By the numbers">
+  <div><b>10</b><span>workspaces, from point of sale to settings</span></div>
+  <div><b>5</b><span>staff roles, scoped to branch</span></div>
+  <div><b>0</b><span>runtime packages, CDNs or build steps</span></div>
+  <div><b>55</b><span>automated tests in the repository</span></div>
+</section>
+<p class="foot">Counts come from the source repository: the workspace list, the role model, <code>pyproject.toml</code> and the test suite.</p>
+
+<section id="who" class="center">
+  <p class="kicker">Built for the whole shop</p>
+  <h2>One place for everyone who touches a sale.</h2>
+  <div class="grid">
+    <div class="card rv"><h3>At the counter</h3><p>Scan or search, pick a customer, take cash, card or UPI, print the receipt. Partial returns reverse the original sale exactly, with the right batch.</p></div>
+    <div class="card rv"><h3>In the back room</h3><p>Receive against a purchase order, capture batch and expiry, count the shelf, transfer between stores. Expired stock is blocked and sold first-expiry-first-out.</p></div>
+    <div class="card rv"><h3>In the office</h3><p>Every movement posts to a double-entry ledger. Trial balance, margin, supplier balances, shifts and tasks, and CSV exports your accountant can open.</p></div>
+  </div>
+</section>
+
+<section id="see" class="tint">
+  <div class="center"><p class="kicker">See it</p><h2>Real screens. Real ledger underneath.</h2><p class="sub">Captured from the running application. The catalogue, prices and stock shown are fictional.</p></div>
+  <div class="controls">
+    <div class="seg" role="radiogroup" aria-label="Screen" data-key="view">
+      <button type="button" role="radio" aria-checked="true" data-value="overview">Overview</button>
+      <button type="button" role="radio" aria-checked="false" data-value="pos">Point of sale</button>
+      <button type="button" role="radio" aria-checked="false" data-value="products">Products</button>
+      <button type="button" role="radio" aria-checked="false" data-value="inventory">Inventory</button>
+      <button type="button" role="radio" aria-checked="false" data-value="finance">Finance</button>
+      <button type="button" role="radio" aria-checked="false" data-value="shop">Storefront</button>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Appearance" data-key="mode">
+      <button type="button" role="radio" aria-checked="true" data-value="light">Light</button>
+      <button type="button" role="radio" aria-checked="false" data-value="dark">Dark</button>
+    </div>
+  </div>
+  <figure class="shot"><img id="shot" src="shots/light-overview.jpg" alt="Zyvor Retail: Your daily view, light appearance, synthetic data" width="1440" height="900" loading="lazy"><figcaption id="shot-cap">Your daily view · light · synthetic data</figcaption></figure>
+</section>
+
+<section id="modules">
+  <div class="center"><p class="kicker">Modules</p><h2>What a trading day needs.</h2><p class="sub">Each row is implemented and covered by the repository's tests. The limits are on this page too, in <a href="#honest">Honest limits</a>.</p></div>
+  <div class="grid">
+    <div class="card rv"><h3>Point of sale</h3><p>Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI tender recording, printable receipts, shifts with counted-versus-expected cash.</p></div>
+    <div class="card rv"><h3>Catalogue</h3><p>SKU and barcode uniqueness, packs, categories, prices, tax rates, reorder levels, and CSV import from the browser or the command line.</p></div>
+    <div class="card rv"><h3>Inventory</h3><p>Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, and stock-count sessions that detect conflicts.</p></div>
+    <div class="card rv"><h3>Purchasing</h3><p>Suppliers, multi-line purchase orders, partial receipts, unique invoice numbers, replenishment drafts, and supplier returns against credits.</p></div>
+    <div class="card rv"><h3>Pickup storefront</h3><p>A public catalogue and pickup request. Staff mark orders ready or cancelled; collection links atomically to the sale.</p></div>
+    <div class="card rv"><h3>Customers and loyalty</h3><p>One company-wide directory with a consent flag, and one point earned per &#8377;100, reversed if the sale is returned.</p></div>
+  </div>
+</section>
+
+<section id="books" class="tint">
+  <div class="center"><p class="kicker">The books</p><h2>Stock and money cannot disagree.</h2><p class="sub">A sale, a receipt, a write-off and a return each write to the stock ledger and to the double-entry journal in the same transaction. There is no end-of-day sync to forget.</p></div>
+  <div class="grid">
+    <div class="card rv"><span class="tag t-b">Transactional</span><h3>One commit, two ledgers</h3><p>Quoted prices and discounts are checked again at commit. A retried checkout is idempotent and never consumes a promotion twice.</p></div>
+    <div class="card rv"><span class="tag t-g">Reports</span><h3>Answers, not exports</h3><p>Revenue, margin, inventory value, supplier balances, trial balance and date-range profit, plus stock and sales CSVs with formula-injection protection.</p></div>
+    <div class="card rv"><span class="tag t-a">Boundary</span><h3>Not statutory GST</h3><p>It is a sound management ledger, not e-invoicing or a certified accounting system. Statutory workflows are listed under honest limits.</p></div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="center"><p class="kicker">Security</p><h2>Boring, careful defaults.</h2></div>
+  <div class="grid">
+    <div class="card rv"><h3>Sign-in</h3><p>Hashed passwords, opaque HttpOnly sessions, CSRF protection, persistent throttle counters, and session revocation.</p></div>
+    <div class="card rv"><h3>Access</h3><p>Five roles with branch scope, checked on the server. Staff can be disabled and passwords changed by admins or by the person themselves.</p></div>
+    <div class="card rv"><h3>Network edge</h3><p>An Envoy edge with HTTPS, HTTP redirects, token buckets, body and header limits, timeouts, and private routes for backup and metrics.</p></div>
+  </div>
+  <p class="foot center">No independent security review has been done yet. See honest limits.</p>
+</section>
+
+<section id="deploy" class="tint">
+  <div class="center"><p class="kicker">Deploy</p><h2>From a laptop to a cluster.</h2><p class="sub">The same application, three ways to run it.</p></div>
+  <div class="grid">
+    <div class="card rv"><h3>Local</h3><p>Python 3.12 with SQLite. One command, no packages, no build step, nothing leaves your machine.</p></div>
+    <div class="card rv"><h3>Compose with HTTPS</h3><p>A standalone stack with Envoy terminating TLS, redirects, rate limits and private operations routes.</p></div>
+    <div class="card rv"><h3>Kubernetes</h3><p>Non-root pods, probes, default-deny network policies, data and backup volumes, an edge-only autoscaler and a scheduled verified backup.</p></div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="center"><p class="kicker">Run it</p><h2>Two minutes, one command.</h2><p class="sub">The source is private. Ask for access and you receive a ZIP; unpack it, then:</p></div>
+  <pre class="cmd" tabindex="0"><code>export RETAIL_ADMIN_EMAIL=owner@zyvor.local
+read -s -p 'Initial admin password (12+ characters): ' RETAIL_ADMIN_PASSWORD; printf '\n'
+export RETAIL_ADMIN_PASSWORD
+python3 -m retail.server --demo</code></pre>
+  <p class="small center">Open <code>http://127.0.0.1:8080</code> and sign in with the account you chose. The public pickup storefront is at <code>/shop</code>. The <code>--demo</code> flag seeds a fictional catalogue and stock on an empty database. Choose your own password; never commit it.</p>
+</section>
+
+<section id="honest">
+  <div class="center"><p class="kicker">Honest limits</p><h2>What Zyvor Retail is not, yet.</h2><p class="sub">Taken from the product's own release scope. A long feature list does not prove a commercial launch.</p></div>
+  <table>
+    <thead><tr><th>Area</th><th>Where it stands</th></tr></thead>
+    <tbody>
+      <tr><td>Maturity</td><td>A <b>pilot release</b> with a working core. Start with a controlled pilot whose workflows match the implemented scope.</td></tr>
+      <tr><td>Tax and statutory</td><td><b>No</b> statutory GST, e-invoicing, purchase input tax, period close or year-end. Not a certified accounting system.</td></tr>
+      <tr><td>Payments and hardware</td><td>Tenders are <i>recorded</i>, not initiated. No payment gateway, split tenders, credit sales, calibrated scales or fiscal printer drivers.</td></tr>
+      <tr><td>Offline</td><td>A loaded tab keeps a pending checkout for manual retry. It is <b>not</b> a full offline POS: no service worker and no reloadable offline catalogue.</td></tr>
+      <tr><td>Storefront</td><td>Pickup only: no online payment, accounts, delivery, reserved stock, order tracking or verified phone ownership.</td></tr>
+      <tr><td>Security</td><td>No independent review, no MFA or SSO, no audit signing, no encrypted application fields.</td></tr>
+      <tr><td>Scale</td><td>One application instance on SQLite. No application high availability and no PostgreSQL migration yet; container and cluster validation is still to be run in your environment.</td></tr>
+      <tr><td>Not built yet</td><td>Variants, serial numbers, bins, recalls, RFQs, PO approval chains, three-way matching, payroll, rostering, franchise royalties, forecasting.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="faq">
+  <div class="center"><p class="kicker">Questions</p><h2>Straight answers.</h2></div>
+  <details><summary>Can I run my real shop on it today?</summary><p>Treat it as a pilot. The core trading, stock and ledger flows work and are tested, but statutory tax, payment and hardware integrations are not there. Pilot it alongside your existing process first.</p></details>
+  <details><summary>Does it need the internet or a cloud account?</summary><p>No. It runs on your own machine or server with Python and SQLite, and the interface uses system fonts and original vector art. No CDN, analytics or external service is called.</p></details>
+  <details><summary>How many stores does it support?</summary><p>Several under one company: per-branch records, a shared customer directory and catalogue, admin branch switching, and immediate transfers. Consolidation across legal entities or currencies is not built.</p></details>
+  <details><summary>Where does the data live?</summary><p>In a SQLite database on infrastructure you run, with a verified backup job in the Kubernetes deployment. Existing databases upgrade through numbered transactional migrations.</p></details>
+  <details><summary>Can I see the source?</summary><p>The source repository is private. Ask us what we can share with evaluators.</p></details>
+</section>
+
+<section class="final">
+  <h2>Ready for a pilot?</h2>
+  <p class="lede">Tell us about your stores. We will walk you through it with a fictional catalogue first.</p>
+  <div class="cta"><a class="btn primary" href="mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot">Contact sales</a><a class="btn" href="mailto:security@zyvor.dev?subject=Zyvor%20Retail%20security%20questions">Security questions</a></div>
+</section>
+</main>
+
+<footer>
+  <div class="cols">
+    <div><h3>Zyvor Retail</h3><a href="#see">See it</a><a href="#modules">Modules</a><a href="#install">Run it</a></div>
+    <div><h3>Trust</h3><a href="#security">Security</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a></div>
+    <div><h3>Zyvor AI Labs</h3><a href="https://zyvorai.github.io/zyvor-zyvora-site/">ZYVORA, the hospital OS</a><a href="mailto:sales@zyvor.dev">sales@zyvor.dev</a></div>
+  </div>
+  <p>&copy; Zyvor AI Labs. Release 0.3.0 pilot. All screens use fictional data.</p>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
