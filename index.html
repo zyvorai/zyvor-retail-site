@@ -34,7 +34,7 @@
     <span>RETAIL</span>
   </a>
   <nav id="sections" aria-label="Sections">
-    <a href="#see">See it</a><a href="#modules">Modules</a><a href="#books">Books</a><a href="#security">Security</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a>
+    <a href="#speed">Speed</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#books">Books</a><a href="#security">Security</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a>
   </nav>
   <div class="bar-actions">
     <a class="btn small" href="#install">Run it</a>
@@ -52,7 +52,7 @@
   <p class="lede"><strong>Sell at the counter, count the shelf, pay the supplier and close the books</strong> from one calm console. Built for a company that runs several stores.</p>
   <div class="cta"><a class="btn primary" href="#install">Run it in two minutes</a><a class="btn" href="#see">See the screens</a><a class="btn" href="mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot">Ask about a pilot</a></div>
   <ul class="chips" aria-label="Status">
-    <li class="ok">Runs with no packages</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.3.0</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
+    <li class="ok">Runs with no packages</li><li class="ok">Keyboard-first</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.3.0</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
   </ul>
   <div class="window" role="group" aria-label="A screenshot of the Zyvor Retail overview (synthetic data)"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
     <img class="only-light" src="shots/light-overview.jpg" alt="Zyvor Retail overview: net revenue, gross profit, inventory value and replenishment, with quick actions (synthetic data)" width="1440" height="900" fetchpriority="high" decoding="async"><img class="only-dark" src="shots/dark-overview.jpg" alt="Zyvor Retail overview in dark mode (synthetic data)" width="1440" height="900" loading="lazy" decoding="async"></div>
@@ -63,7 +63,7 @@
   <div><b>10</b><span>workspaces, from point of sale to settings</span></div>
   <div><b>5</b><span>staff roles, scoped to branch</span></div>
   <div><b>0</b><span>runtime packages, CDNs or build steps</span></div>
-  <div><b>65</b><span>automated tests in the repository</span></div>
+  <div><b>71</b><span>automated tests in the repository</span></div>
 </section>
 <p class="foot">Counts come from the source repository: the workspace list, the role model, <code>pyproject.toml</code> and the test suite.</p>
 
@@ -74,6 +74,18 @@
     <div class="card rv"><h3>At the counter</h3><p>Scan or search, pick a customer, take cash, card or UPI, print the receipt. Partial returns reverse the original sale exactly, with the right batch.</p></div>
     <div class="card rv"><h3>In the back room</h3><p>Receive against a purchase order, capture batch and expiry, count the shelf, transfer between stores. Expired stock is blocked and sold first-expiry-first-out.</p></div>
     <div class="card rv"><h3>In the office</h3><p>Every movement posts to a double-entry ledger. Trial balance, margin, supplier balances, shifts and tasks, and CSV exports your accountant can open.</p></div>
+  </div>
+</section>
+
+<section id="speed">
+  <div class="center"><p class="kicker">Made for speed</p><h2>Built to be used all day.</h2><p class="sub">Small things that add up at the counter and in the back room.</p></div>
+  <div class="grid">
+    <div class="card rv"><h3>Tells you what to do next</h3><p>The overview ranks what needs attention: expired stock, low stock, pickup requests, due tasks. One clear action per item.</p></div>
+    <div class="card rv"><h3>Keyboard first</h3><p>Scan a barcode and it is in the bag. Press <kbd>/</kbd> to search, <kbd>+</kbd> and <kbd>&minus;</kbd> to change quantity, <kbd>&#8984;K</kbd> to find anything, <kbd>?</kbd> for every shortcut.</p></div>
+    <div class="card rv"><h3>Change due, instantly</h3><p>Type the cash received and see the change, or how much is short. Cash, card and UPI are one tap apart.</p></div>
+    <div class="card rv"><h3>Tables that sort</h3><p>Click any column to sort, switch to compact rows, and open a product or customer for batches, movements and purchases.</p></div>
+    <div class="card rv"><h3>Links that work</h3><p>Every workspace and tab has its own address. Share it, bookmark it, press Back. Refresh keeps your place.</p></div>
+    <div class="card rv"><h3>Calm when things go wrong</h3><p>Offline or a failed refresh shows a clear banner with the time of the last good data. Pending sales wait safely.</p></div>
   </div>
 </section>
 
@@ -180,7 +192,7 @@ python3 -m retail.server --demo</code></pre>
 
 <footer>
   <div class="cols">
-    <div><h3>Zyvor Retail</h3><a href="#see">See it</a><a href="#modules">Modules</a><a href="#install">Run it</a></div>
+    <div><h3>Zyvor Retail</h3><a href="#speed">Speed</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#install">Run it</a></div>
     <div><h3>Trust</h3><a href="#security">Security</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a></div>
     <div><h3>Zyvor AI Labs</h3><a href="https://zyvorai.github.io/zyvor-zyvora-site/">ZYVORA, the hospital OS</a><a href="mailto:sales@zyvor.dev">sales@zyvor.dev</a></div>
   </div>
