@@ -7,7 +7,7 @@
 <meta name="description" content="Zyvor Retail is Zyvor AI Labs' retail application: point of sale, stock ledger with batches and expiry, purchasing, a pickup storefront and double-entry bookkeeping for a company with many stores. Runs with no packages and no cloud. Pilot release; synthetic data only.">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://zyvorai.github.io/zyvor-retail-site/">
-<link rel="icon" href="assets/mark-light.svg" type="image/svg+xml">
+<link rel="icon" href="assets/z.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zyvor Retail">
@@ -30,11 +30,11 @@
 
 <header class="bar">
   <a class="brand" href="#top" aria-label="Zyvor Retail home">
-    <img class="logo only-light" src="assets/mark-light.svg" alt="" width="32" height="32"><img class="logo only-dark" src="assets/mark-dark.svg" alt="" width="32" height="32">
-    <span>RETAIL</span>
+    <img class="logo" src="assets/z.svg" alt="" width="32" height="32">
+    <span class="wm"><b>zyvor</b> Retail</span>
   </a>
   <nav id="sections" aria-label="Sections">
-    <a class="nav-try" href="#demo">Live demo</a><a href="#speed">Speed</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#books">Books</a><a href="#security">Security</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a>
+    <a class="nav-try" href="#demo">Live demo</a><a href="#watch">Watch</a><a href="#speed">Speed</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#books">Books</a><a href="#security">Security</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a>
   </nav>
   <div class="bar-actions">
     <a class="btn small" href="#install">Run it</a>
@@ -47,6 +47,7 @@
 
 <main id="main">
 <section class="hero" id="top">
+  <svg class="hero-z z-draw" viewBox="0 0 64 64" width="72" height="72" role="img" aria-label="Zyvor"><defs><linearGradient id="zg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff5a15"/><stop offset="1" stop-color="#cc420a"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#zg)"/><path class="z-stroke" pathLength="1" d="M18.5,20.5 45.5,20.5 18.5,43.5 45.5,43.5" fill="none" stroke="#fff" stroke-width="8.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
   <p class="kicker">Zyvor AI Labs · Retail</p>
   <h1>Every store. Every detail. <em>One place.</em></h1>
   <p class="lede"><strong>Sell at the counter, count the shelf, pay the supplier and close the books</strong> from one calm console. Built for a company that runs several stores.</p>
@@ -63,9 +64,17 @@
   <div><b>10</b><span>workspaces, from point of sale to settings</span></div>
   <div><b>5</b><span>staff roles, scoped to branch</span></div>
   <div><b>0</b><span>runtime packages, CDNs or build steps</span></div>
-  <div><b>71</b><span>automated tests in the repository</span></div>
+  <div><b>72</b><span>automated tests in the repository</span></div>
 </section>
 <p class="foot">Counts come from the source repository: the workspace list, the role model, <code>pyproject.toml</code> and the test suite.</p>
+
+<section id="watch" class="center">
+  <p class="kicker">Watch it</p>
+  <h2>A trading day in thirty-four seconds.</h2>
+  <p class="sub">Sign in, read the overview, open a product and a batch, ring up a sale with change due, then browse the pickup storefront. Recorded on the running app. Fictional data, no sound.</p>
+  <figure class="walk"><video controls preload="none" playsinline width="1280" height="800" poster="media/poster.jpg" aria-describedby="walk-text"><source src="media/walkthrough.webm" type="video/webm"><source src="media/walkthrough.mp4" type="video/mp4">Your browser cannot play this video. The screens are in the gallery below.</video><figcaption>Zyvor Retail 0.4 console and storefront · 34 s · no autoplay</figcaption></figure>
+  <details class="walk-text" id="walk-text"><summary>What happens in the video</summary><ol><li>The login page, then the overview with a seven-day chart and the exact figure for one day.</li><li>A product opens in a drawer with its batches and recent movements.</li><li>A batch opens in a drawer with days to expiry, units and stock value.</li><li>Two items go into a sale, cash is entered, and the sale-complete screen shows change due.</li><li>The public storefront opens a product sheet, picks a quantity and adds it to the bag.</li></ol></details>
+</section>
 
 <section id="who" class="center">
   <p class="kicker">Built for the whole shop</p>
@@ -83,7 +92,7 @@
     <div class="card rv"><h3>Tells you what to do next</h3><p>The overview ranks what needs attention: expired stock, low stock, pickup requests, due tasks. One clear action per item.</p></div>
     <div class="card rv"><h3>Keyboard first</h3><p>Scan a barcode and it is in the bag. Press <kbd>/</kbd> to search, <kbd>+</kbd> and <kbd>&minus;</kbd> to change quantity, <kbd>&#8984;K</kbd> to find anything, <kbd>?</kbd> for every shortcut.</p></div>
     <div class="card rv"><h3>Change due, instantly</h3><p>Type the cash received and see the change, or how much is short. Cash, card and UPI are one tap apart.</p></div>
-    <div class="card rv"><h3>Tables that sort</h3><p>Click any column to sort, switch to compact rows, and open a product or customer for batches, movements and purchases.</p></div>
+    <div class="card rv"><h3>Tables that sort</h3><p>Click any column to sort, switch to compact rows, and open a product, customer, batch or receipt for the full story, without leaving the page.</p></div>
     <div class="card rv"><h3>Links that work</h3><p>Every workspace and tab has its own address. Share it, bookmark it, press Back. Refresh keeps your place.</p></div>
     <div class="card rv"><h3>Calm when things go wrong</h3><p>Offline or a failed refresh shows a clear banner with the time of the last good data. Pending sales wait safely.</p></div>
   </div>
@@ -94,6 +103,7 @@
   <div class="controls">
     <div class="seg" role="radiogroup" aria-label="Screen" data-key="view">
       <button type="button" role="radio" aria-checked="true" data-value="overview">Overview</button>
+      <button type="button" role="radio" aria-checked="false" data-value="login">Sign in</button>
       <button type="button" role="radio" aria-checked="false" data-value="pos">Point of sale</button>
       <button type="button" role="radio" aria-checked="false" data-value="products">Products</button>
       <button type="button" role="radio" aria-checked="false" data-value="inventory">Inventory</button>
@@ -115,7 +125,7 @@
     <div class="card rv"><h3>Catalogue</h3><p>SKU and barcode uniqueness, packs, categories, prices, tax rates, reorder levels, and CSV import from the browser or the command line.</p></div>
     <div class="card rv"><h3>Inventory</h3><p>Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, and stock-count sessions that detect conflicts.</p></div>
     <div class="card rv"><h3>Purchasing</h3><p>Suppliers, multi-line purchase orders, partial receipts, unique invoice numbers, replenishment drafts, and supplier returns against credits.</p></div>
-    <div class="card rv"><h3>Pickup storefront</h3><p>A public catalogue and pickup request. Staff mark orders ready or cancelled; collection links atomically to the sale.</p></div>
+    <div class="card rv"><h3>Pickup storefront</h3><p>A public catalogue with product sheets, a bag that counts, and a pickup request that ends in a clear timeline. Staff mark orders ready or cancelled; collection links atomically to the sale.</p></div>
     <div class="card rv"><h3>Customers and loyalty</h3><p>One company-wide directory with a consent flag, and one point earned per &#8377;100, reversed if the sale is returned.</p></div>
   </div>
 </section>

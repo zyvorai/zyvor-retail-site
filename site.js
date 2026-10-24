@@ -19,7 +19,7 @@
   var state = { mode: root.getAttribute("data-theme") === "dark" ? "dark" : "light", view: "overview" };
   var LABEL = {
     light: "light", dark: "dark",
-    overview: "Your daily view", pos: "Point of sale", products: "Products", inventory: "Inventory", finance: "Finance", shop: "Public pickup storefront"
+    overview: "Your daily view", login: "Sign in", pos: "Point of sale", products: "Products", inventory: "Inventory", finance: "Finance", shop: "Public pickup storefront"
   };
   var img = document.getElementById("shot"), cap = document.getElementById("shot-cap");
   var groups = [].slice.call(document.querySelectorAll(".seg"));
