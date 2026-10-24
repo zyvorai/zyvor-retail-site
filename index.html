@@ -53,7 +53,7 @@
   <p class="lede"><strong>Sell at the counter, count the shelf, pay the supplier and close the books</strong> from one calm console. Built for a company that runs several stores.</p>
   <div class="cta"><a class="btn primary" href="#demo">Try the live demo</a><a class="btn" href="#install">Run it in two minutes</a><a class="btn" href="#see">See the screens</a><a class="btn" href="mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot">Ask about a pilot</a></div>
   <ul class="chips" aria-label="Status">
-    <li class="ok">Runs with no packages</li><li class="ok">Keyboard-first</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.6.2</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
+    <li class="ok">Runs with no packages</li><li class="ok">Keyboard-first</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.7.0</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
   </ul>
   <div class="window" role="group" aria-label="A screenshot of the Zyvor Retail overview (synthetic data)"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
     <img class="only-light" src="shots/light-overview.jpg" alt="Zyvor Retail overview: net revenue, gross profit, inventory value and replenishment, with quick actions (synthetic data)" width="1440" height="900" fetchpriority="high" decoding="async"><img class="only-dark" src="shots/dark-overview.jpg" alt="Zyvor Retail overview in dark mode (synthetic data)" width="1440" height="900" loading="lazy" decoding="async"></div>
@@ -64,7 +64,7 @@
   <div><b>10</b><span>workspaces, from point of sale to settings</span></div>
   <div><b>5</b><span>staff roles, scoped to branch</span></div>
   <div><b>0</b><span>runtime packages, CDNs or build steps</span></div>
-  <div><b>91</b><span>automated tests in the repository</span></div>
+  <div><b>113</b><span>automated tests in the repository</span></div>
 </section>
 <p class="foot">Counts come from the source repository: the workspace list, the role model, <code>pyproject.toml</code> and the test suite.</p>
 
@@ -89,7 +89,7 @@
 <section id="speed">
   <div class="center"><p class="kicker">Made for speed</p><h2>Built to be used all day.</h2><p class="sub">Small things that add up at the counter and in the back room.</p></div>
   <div class="grid">
-    <div class="card rv"><h3>Tells you what to do next</h3><p>The overview ranks what needs attention: expired stock, low stock, pickup requests, due tasks. One clear action per item.</p></div>
+    <div class="card rv"><h3>Tells you what to do next</h3><p>The overview ranks what needs attention: expired stock, low stock, pickup requests, due tasks. One clear action per item. Or just ask: &ldquo;What should I reorder?&rdquo;</p></div>
     <div class="card rv"><h3>Keyboard first</h3><p>Scan a barcode and it is in the bag. Press <kbd>/</kbd> to search, <kbd>+</kbd> and <kbd>&minus;</kbd> to change quantity, <kbd>&#8984;K</kbd> to find anything, <kbd>?</kbd> for every shortcut.</p></div>
     <div class="card rv"><h3>Change due, instantly</h3><p>Type the cash received and see the change, or how much is short. Cash, card and UPI are one tap apart.</p></div>
     <div class="card rv"><h3>Tables that sort</h3><p>Click any column to sort, switch to compact rows, and open a product, customer, batch or receipt for the full story, without leaving the page.</p></div>
@@ -108,6 +108,7 @@
       <button type="button" role="radio" aria-checked="false" data-value="products">Products</button>
       <button type="button" role="radio" aria-checked="false" data-value="inventory">Inventory</button>
       <button type="button" role="radio" aria-checked="false" data-value="suggestions">Suggestions</button>
+      <button type="button" role="radio" aria-checked="false" data-value="ask">Ask</button>
       <button type="button" role="radio" aria-checked="false" data-value="finance">Finance</button>
       <button type="button" role="radio" aria-checked="false" data-value="shop">Storefront</button>
     </div>
@@ -194,6 +195,7 @@ python3 -m retail.server --demo</code></pre>
       <tr><td>Tax and statutory</td><td><b>No</b> statutory GST, e-invoicing, purchase input tax, period close or year-end. Not a certified accounting system.</td></tr>
       <tr><td>Payments and hardware</td><td>Tenders are <i>recorded</i>, not initiated. No payment gateway, split tenders, credit sales, calibrated scales or fiscal printer drivers.</td></tr>
       <tr><td>Offline</td><td>A loaded tab keeps a pending checkout for manual retry. It is <b>not</b> a full offline POS: no service worker and no reloadable offline catalogue.</td></tr>
+      <tr><td>Ask your store</td><td>Read-only questions answered from your own records, with the records used shown. Built-in rules understand a limited set of questions; a language model you connect (off by default) handles free wording but can still be wrong, so every answer shows its data and flags figures it cannot find there. No customer details are ever sent, and it cannot change anything.</td></tr>
       <tr><td>Suggestions</td><td>Statistical estimates from your own sales, <b>not</b> a trained model. They need about three weeks of history, do not know about promotions or festivals, and use one lead time for the whole store. Nothing is ordered or marked down unless a person submits it.</td></tr>
       <tr><td>Storefront</td><td>Pickup only: no online payment, accounts, delivery, reserved stock, order tracking or verified phone ownership.</td></tr>
       <tr><td>Security</td><td>No independent review, no MFA or SSO, no audit signing, no encrypted application fields.</td></tr>
@@ -206,7 +208,7 @@ python3 -m retail.server --demo</code></pre>
 <section id="faq">
   <div class="center"><p class="kicker">Questions</p><h2>Straight answers.</h2></div>
   <details><summary>Can I run my real shop on it today?</summary><p>Treat it as a pilot. The core trading, stock and ledger flows work and are tested, but statutory tax, payment and hardware integrations are not there. Pilot it alongside your existing process first.</p></details>
-  <details><summary>Is there AI in it?</summary><p>There is a statistical forecast, no trained model. Suggestions turns your own sales history into reorder and expiry advice that shows the numbers behind every line, runs on your machine and makes no network call. Language features through an OpenAI-compatible endpoint are planned as an optional layer; none ship today.</p></details>
+  <details><summary>Is there AI in it?</summary><p>Two features. Suggestions is a statistical forecast, not a trained model: it turns your sales history into reorder and expiry advice that shows its arithmetic. Ask your store answers plain-language questions from your own records. By default it uses built-in rules and makes no network call. If you point it at a language model you run or choose (any OpenAI-compatible endpoint, such as Zyvor Nuvora or a local Ollama), the model only picks from a fixed set of read-only report functions and writes up the result. It is off until you set it up, it never sees customer names or phone numbers, and it cannot change anything.</p></details>
   <details><summary>Does it need the internet or a cloud account?</summary><p>No. It runs on your own machine or server with Python and SQLite, and the interface uses system fonts and original vector art. No CDN, analytics or external service is called.</p></details>
   <details><summary>How many stores does it support?</summary><p>Several under one company: per-branch records, a shared customer directory and catalogue, admin branch switching, and immediate transfers. Consolidation across legal entities or currencies is not built.</p></details>
   <details><summary>Where does the data live?</summary><p>In a SQLite database on infrastructure you run, with a verified backup job in the Kubernetes deployment. Existing databases upgrade through numbered transactional migrations.</p></details>
@@ -226,7 +228,7 @@ python3 -m retail.server --demo</code></pre>
     <div><h3>Trust</h3><a href="#security">Security</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a></div>
     <div><h3>Zyvor AI Labs</h3><a href="https://zyvorai.github.io/zyvor-zyvora-site/">ZYVORA, the hospital OS</a><a href="mailto:sales@zyvor.dev">sales@zyvor.dev</a></div>
   </div>
-  <p>&copy; Zyvor AI Labs. Release 0.6.2 pilot. All screens use fictional data.</p>
+  <p>&copy; Zyvor AI Labs. Release 0.7.0 pilot. All screens use fictional data.</p>
 </footer>
 <script src="site.js"></script>
 </body>
