@@ -18,7 +18,6 @@ Pull requests for the site's pages are not generally accepted. If you spot a mis
 
 ## For maintainers
 
-`docs/social/build-social.sh` rebuilds the social preview and README hero from the screenshots in `shots/`. `node scripts/docs-check.mjs` checks the README and docs (links, required statements, no un-negated regulatory claims).
 
 ## Contact
 
