@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask about a pilot or a demo login
+    url: https://zyvorai.github.io/zyvor-retail-site/#demo
+    about: Pilots and staff demo logins are arranged by email. See the Live demo section of the website.
+  - name: Report a security vulnerability
+    url: https://github.com/zyvorai/zyvor-retail-site/security/policy
+    about: Please do not open a public issue for a vulnerability. Email security@zyvor.dev.
