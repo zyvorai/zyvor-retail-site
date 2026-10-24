@@ -16,10 +16,6 @@ Thank you for looking at Zyvor Retail. This repository is the **public website**
 
 Pull requests for the site's pages are not generally accepted. If you spot a mistake on the site or in these docs, open an issue and we will fix it.
 
-## For maintainers
-
-`docs/social/build-social.sh` rebuilds the social preview and README hero from the screenshots in `shots/`. `node scripts/docs-check.mjs` checks the README and docs (links, required statements, no un-negated regulatory claims).
-
 ## Contact
 
 [sales@zyvor.dev](mailto:sales@zyvor.dev) for pilots and demos · [security@zyvor.dev](mailto:security@zyvor.dev) for security.
