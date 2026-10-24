@@ -1,0 +1,32 @@
+name: The website or the demo does not work
+description: A page, a link, the video or the live demo is not behaving as described.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The demo uses **fictional data only**. **Never include customer data, passwords, session cookies or payment details.**
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did it happen?
+      options: [The website, The live demo storefront, The live demo staff console, The video, Other]
+    validations: { required: true }
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: "Safari on a MacBook, Chrome on an Android phone"
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened?
+      description: What you did, what you saw, and what you expected.
+    validations: { required: true }
+  - type: checkboxes
+    id: safe
+    attributes:
+      label: Safe to share
+      options:
+        - label: I have not included customer data, passwords or payment details.
+          required: true

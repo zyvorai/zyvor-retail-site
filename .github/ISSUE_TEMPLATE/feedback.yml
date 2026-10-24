@@ -1,0 +1,34 @@
+name: Feedback
+description: Tell us what worked, what confused you, or what you wanted to see.
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The demo uses **fictional data only**. **Never include customer data, passwords, session cookies or payment details** in this form.
+  - type: dropdown
+    id: role
+    attributes:
+      label: Your role
+      options: [Shop owner, Store manager, Cashier, Accountant, IT, Other]
+    validations: { required: true }
+  - type: textarea
+    id: worked
+    attributes:
+      label: What worked?
+  - type: textarea
+    id: confused
+    attributes:
+      label: What confused you, or was slow?
+    validations: { required: true }
+  - type: textarea
+    id: wanted
+    attributes:
+      label: What did you want to see and not find?
+  - type: checkboxes
+    id: safe
+    attributes:
+      label: Safe to share
+      options:
+        - label: I have not included customer data, passwords or payment details.
+          required: true
