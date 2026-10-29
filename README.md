@@ -8,18 +8,18 @@
 
 **Sell at the counter, count the shelf, pay the supplier and close the books from one calm console. Built for a company that runs several stores.**
 
-[![Release](https://img.shields.io/badge/pilot%20release-0.6.2-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
+[![Release](https://img.shields.io/badge/pilot%20release-0.11.0-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
 
 [**Live demo**](https://zyvorai.github.io/zyvor-retail-site/#demo) · [**Watch**](https://zyvorai.github.io/zyvor-retail-site/#watch) · [**See it**](#see-it) · [**Run it**](#run-it-in-two-minutes) · [**Docs**](docs/README.md) · [**Ask about a pilot**](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot)
 
 </div>
 
 > [!IMPORTANT]
-> **Zyvor Retail is a pilot release with a working core.** It uses **fictional data only** and is **not a certified tax or accounting system**: no statutory GST, no e-invoicing, no payment gateway. Start with a controlled pilot whose workflows match the implemented scope. Read [Intended use and limits](docs/INTENDED-USE.md).
+> **Zyvor Retail is a pilot release with a working core.** It uses **fictional data only** and is **not a certified tax or accounting system**: pilot tax invoices and GSTR-1 CSV are included; no certified GST filing, no e-invoicing, no payment gateway. Start with a controlled pilot whose workflows match the implemented scope. Read [Intended use and limits](docs/INTENDED-USE.md).
 
 This repository is the **public home of the Zyvor Retail website**. The application source is private; you can ask for access to evaluate it.
 
-| **10** workspaces, from point of sale to settings | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **91** automated tests in the repository |
+| **10** workspaces, from point of sale to settings | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **170** automated tests in the repository |
 |:---:|:---:|:---:|:---:|
 
 ---
@@ -57,9 +57,9 @@ All of them: **[Gallery](docs/GALLERY.md)**.
 
 ## Built for the whole shop
 
-- **At the counter.** Scan or search, pick a customer, take cash, card or UPI, print the receipt. Partial returns reverse the original sale exactly, with the right batch.
-- **In the back room.** Receive against a purchase order, capture batch and expiry, count the shelf, transfer between stores. Expired stock is blocked and sold first-expiry-first-out.
-- **In the office.** Every movement posts to a double-entry ledger. Trial balance, margin, supplier balances, shifts and tasks, and CSV exports your accountant can open.
+- **At the counter.** Scan or search, pick a customer, take cash, card or UPI (including cash+UPI split), print a tax invoice. Partial returns reverse the original sale exactly, with the right batch and a credit note.
+- **In the back room.** Receive against a purchase order, capture batch, expiry and input tax, count the shelf, transfer between stores. Expired stock is blocked and sold first-expiry-first-out.
+- **In the office.** Every movement posts to a double-entry ledger. Trial balance, margin, supplier balances, GSTR-1 CSV, shifts and tasks, and exports your accountant can open.
 
 ### Made for speed
 
@@ -72,10 +72,10 @@ All of them: **[Gallery](docs/GALLERY.md)**.
 
 | Module | What it covers |
 |---|---|
-| **Point of sale** | Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI tender recording, printable receipts, shifts with counted-versus-expected cash |
-| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, reorder levels, CSV import from the browser or the command line |
+| **Point of sale** | Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI (including cash+UPI split), printable tax invoices, shifts with counted-versus-expected cash |
+| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, CSV import from the browser or the command line |
 | **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, stock-count sessions that detect conflicts, reorder and expiry suggestions that show their arithmetic |
-| **Purchasing** | Suppliers, multi-line purchase orders, partial receipts, unique invoice numbers, replenishment drafts, supplier returns against credits |
+| **Purchasing** | Suppliers, multi-line purchase orders, partial receipts with input tax, unique invoice numbers, replenishment drafts, supplier returns against credits |
 | **Pickup storefront** | A public catalogue with product sheets, a bag that counts, and a pickup request that ends in a clear timeline |
 | **Customers and loyalty** | One company-wide directory with a consent flag; one point earned per ₹100, reversed if the sale is returned |
 
@@ -83,11 +83,11 @@ Every row is implemented and covered by the repository's tests. Details: **[Modu
 
 ## The books
 
-**Stock and money cannot disagree.** A sale, a receipt, a write-off and a return each write to the stock ledger and to the double-entry journal in the same transaction, so there is no end-of-day sync to forget. Quoted prices and discounts are checked again at commit, and a retried checkout is idempotent and never consumes a promotion twice. **It is a sound management ledger, not statutory GST, e-invoicing or a certified accounting system.**
+**Stock and money cannot disagree.** A sale, a receipt, a write-off and a return each write to the stock ledger and to the double-entry journal in the same transaction, so there is no end-of-day sync to forget. Quoted prices and discounts are checked again at commit, and a retried checkout is idempotent and never consumes a promotion twice. **Pilot tax invoices and GSTR-1 CSV are included; this is not certified GST, not e-invoicing, and not a certified accounting system.**
 
 ## Security
 
-Hashed passwords, opaque HttpOnly sessions, CSRF protection, persistent throttle counters and session revocation. Five roles with branch scope, checked on the server. An Envoy edge with HTTPS, redirects, token buckets, body and header limits, timeouts and private routes for backup and metrics. **No independent security review has been done yet.** See **[Security overview](docs/SECURITY-OVERVIEW.md)**, and [SECURITY.md](SECURITY.md) to report a vulnerability.
+Hashed passwords, opaque HttpOnly sessions, CSRF protection, persistent throttle counters and session revocation. Optional OpenID Connect SSO (off by default). Five roles with branch scope, checked on the server. An Envoy edge with HTTPS, redirects, token buckets, body and header limits, timeouts and private routes for backup and metrics. **No independent security review has been done yet.** See **[Security overview](docs/SECURITY-OVERVIEW.md)**, and [SECURITY.md](SECURITY.md) to report a vulnerability.
 
 ## From a laptop to a cluster
 
@@ -123,12 +123,12 @@ Open `http://127.0.0.1:8080` and sign in with the account you chose; the public 
 ## Honest limits
 
 - **Maturity.** A pilot release with a working core. Pilot it alongside your existing process first.
-- **Tax and statutory.** No statutory GST, e-invoicing, purchase input tax, period close or year-end. **Not a certified accounting system.**
-- **Payments and hardware.** Tenders are recorded, not initiated. No payment gateway, split tenders, credit sales, calibrated scales or fiscal printer drivers.
-- **Offline.** A loaded tab keeps a pending checkout for manual retry. It is not a full offline POS.
+- **Tax and statutory.** Pilot tax invoices, CGST/SGST/IGST and GSTR-1 CSV are included. Not certified GST, not e-invoicing, not live GSTN filing, no period close or year-end. **Not a certified accounting system.**
+- **Payments and hardware.** Tenders are recorded, not initiated. Cash+UPI split is supported. No payment gateway, credit sales, calibrated scales or fiscal printer drivers.
+- **Offline.** Service worker caches the console shell; a loaded tab keeps a pending checkout for manual retry. It is not a full offline POS.
 - **Suggestions.** Statistical estimates from your own sales, not a trained model. Nothing is ordered or marked down unless a person submits it.
 - **Storefront.** Pickup only: no online payment, accounts, delivery, reserved stock or order tracking.
-- **Security.** No independent review, no MFA or SSO, no audit signing, no encrypted application fields.
+- **Security.** No independent review yet, no MFA of its own, no audit signing, no encrypted application fields. Optional OIDC SSO is available and off by default.
 - **Scale.** One application instance on SQLite. No high availability and no PostgreSQL migration yet.
 
 The full table and what is not built yet: **[Intended use and limits](docs/INTENDED-USE.md)**.
@@ -156,6 +156,6 @@ The full table and what is not built yet: **[Intended use and limits](docs/INTEN
 
 <div align="center">
 
-<sub>Zyvor Retail is built by [Zyvor AI Labs](https://zyvor.dev), who also make [ZYVORA, the hospital OS](https://zyvorai.github.io/zyvor-zyvora-site/). Release 0.6.2 pilot. All screens use fictional data. No application source is published here.</sub>
+<sub>Zyvor Retail is built by [Zyvor AI Labs](https://zyvor.dev), who also make [ZYVORA, the hospital OS](https://zyvorai.github.io/zyvor-zyvora-site/). Release 0.11.0 pilot. All screens use fictional data. No application source is published here.</sub>
 
 </div>

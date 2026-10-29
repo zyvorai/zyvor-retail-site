@@ -1,6 +1,6 @@
 # Gallery
 
-**Pilot release 0.6.2 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.11.0 · Fictional data only · Not a certified tax or accounting system.**
 
 Real screens from the running application. **The catalogue, prices and stock shown are fictional.** Dark first, then light.
 

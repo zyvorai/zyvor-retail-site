@@ -1,6 +1,6 @@
 # Getting started
 
-**Pilot release 0.6.2 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.11.0 · Fictional data only · Not a certified tax or accounting system.**
 
 Two ways to try Zyvor Retail: a live demo you can open now, or a copy you run yourself.
 
@@ -53,7 +53,7 @@ Ask [sales](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot) for the deplo
 
 ## Pilot it safely
 
-Treat Zyvor Retail as a **pilot**. The core trading, stock and ledger flows work and are tested, but statutory tax, payment and hardware integrations are not there. Run it **alongside your existing process** first, with a controlled pilot whose workflows match the implemented scope. See [Intended use and limits](INTENDED-USE.md).
+Treat Zyvor Retail as a **pilot**. The core trading, stock, tax-invoice and ledger flows work and are tested, but certified GST filing, payment gateways and hardware drivers are not there. Run it **alongside your existing process** first, with a controlled pilot whose workflows match the implemented scope. See [Intended use and limits](INTENDED-USE.md).
 
 ## Tell us how it went
 

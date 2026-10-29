@@ -1,6 +1,6 @@
 # Security overview
 
-**Pilot release 0.6.2 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.11.0 · Fictional data only · Not a certified tax or accounting system.**
 
 The controls you can point at in a pilot, and what has **not** been done. To report a vulnerability, read [SECURITY.md](../SECURITY.md).
 
@@ -18,7 +18,7 @@ The controls you can point at in a pilot, and what has **not** been done. To rep
 ## What has not been done
 
 - **No independent security review yet.**
-- **No MFA or SSO**, no audit signing, and no encrypted application fields. Database files and checkout drafts are not encrypted by the application; host and browser access controls matter.
+- **No MFA of its own**, no audit signing, and no encrypted application fields. Optional OIDC SSO is available and off by default. Database files and checkout drafts are not encrypted by the application; host and browser access controls matter.
 - **Payments are recorded, not initiated**, so no card data flows through the application.
 - **One application instance on SQLite**, with no high availability yet; container and cluster validation is still to be run in your environment.
 
