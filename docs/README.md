@@ -6,7 +6,9 @@ These pages are for people evaluating Zyvor Retail: shop owners, managers and th
 
 | Start here | |
 |---|---|
-| [Getting started](GETTING-STARTED.md) | The live demo, a 60-second tour, and running it yourself |
+| [Getting started](GETTING-STARTED.md) | One-command trial, live demo, source ZIP |
+| [Try it](https://zyvorai.github.io/zyvor-retail-site/try/) | Guided Mac / Windows / Linux install |
+| [Releases](RELEASES.md) | Installer assets and checksums |
 | [FAQ](FAQ.md) | Can I run my real shop on it, AI, internet, stores, data, source |
 
 | Understand it | |

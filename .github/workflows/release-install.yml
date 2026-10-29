@@ -1,0 +1,41 @@
+name: Publish install assets
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag (for example v0.11.0)
+        required: true
+        default: v0.11.0
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Publish or update the release with install assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          test -f install/get.sh
+          test -f install/get.ps1
+          test -f install/zyvor-retail-install.tar.gz
+          test -f install/SHA256SUMS
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" install/get.sh install/get.ps1 install/zyvor-retail-install.tar.gz install/SHA256SUMS --clobber
+          else
+            gh release create "$TAG" install/get.sh install/get.ps1 install/zyvor-retail-install.tar.gz install/SHA256SUMS \
+              --title "Zyvor Retail ${TAG#v} trial installer" \
+              --notes "$(cat <<EOF
+One-command trial for Mac, Windows (WSL) and Linux.
+
+\`\`\`bash
+curl -fsSL https://github.com/zyvorai/zyvor-retail-site/releases/latest/download/get.sh | sh -s -- up --demo
+\`\`\`
+
+Fictional data only. Not a certified tax or accounting system. No application source in these assets — the installer pulls \`ghcr.io/zyvorai/zyvor-retail:${TAG#v}\`.
+EOF
+)"
+          fi

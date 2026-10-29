@@ -10,7 +10,7 @@
 
 [![Release](https://img.shields.io/badge/pilot%20release-0.11.0-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
 
-[**Live demo**](https://zyvorai.github.io/zyvor-retail-site/#demo) · [**Watch**](https://zyvorai.github.io/zyvor-retail-site/#watch) · [**See it**](#see-it) · [**Run it**](#run-it-in-two-minutes) · [**Docs**](docs/README.md) · [**Ask about a pilot**](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot)
+[**Try it on your computer**](https://zyvorai.github.io/zyvor-retail-site/try/) · [**Live demo**](https://zyvorai.github.io/zyvor-retail-site/#demo) · [**Watch**](https://zyvorai.github.io/zyvor-retail-site/#watch) · [**Docs**](docs/README.md) · [**Ask about a pilot**](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot)
 
 </div>
 
@@ -107,18 +107,17 @@ A running copy with a fictional store: four weeks of sales, low stock, a pickup 
 
 Open it from the **[website](https://zyvorai.github.io/zyvor-retail-site/#demo)**. A 60-second tour is in **[Getting started](docs/GETTING-STARTED.md#sixty-seconds-what-to-click)**.
 
-## Run it in two minutes
+## Try it on your computer
 
-The source is private. Ask for access and you receive a ZIP; unpack it, then:
+One command, about five minutes, Mac / Windows / Linux. Guided steps: **[Try it](https://zyvorai.github.io/zyvor-retail-site/try/)**.
 
 ```bash
-export RETAIL_ADMIN_EMAIL=owner@zyvor.local
-read -s -p 'Initial admin password (12+ characters): ' RETAIL_ADMIN_PASSWORD; printf '\n'
-export RETAIL_ADMIN_PASSWORD
-python3 -m retail.server --demo
+curl -fsSL https://github.com/zyvorai/zyvor-retail-site/releases/latest/download/get.sh | sh -s -- up --demo
 ```
 
-Open `http://127.0.0.1:8080` and sign in with the account you chose; the public pickup storefront is at `/shop`. `--demo` seeds a fictional catalogue and stock on an empty database. **Choose your own password; never commit it.** More: **[Getting started](docs/GETTING-STARTED.md)**.
+Windows PowerShell uses `get.ps1` (WSL 2). The installer prints a one-time password and opens `http://127.0.0.1:8080`. More: **[Getting started](docs/GETTING-STARTED.md)** · **[Releases](docs/RELEASES.md)**.
+
+Evaluators who need the private source can still [ask sales for a ZIP](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot).
 
 ## Honest limits
 
@@ -139,7 +138,8 @@ The full table and what is not built yet: **[Intended use and limits](docs/INTEN
 
 | | |
 |---|---|
-| [Getting started](docs/GETTING-STARTED.md) | The live demo, a 60-second tour, running it yourself |
+| [Getting started](docs/GETTING-STARTED.md) | One-command trial, live demo, source ZIP |
+| [Try it](https://zyvorai.github.io/zyvor-retail-site/try/) | Guided Mac / Windows / Linux install |
 | [FAQ](docs/FAQ.md) | Can I run my real shop on it, AI, internet, stores, data, source |
 | [Modules](docs/MODULES.md) | Everything a trading day needs, and what is not built yet |
 | [Security overview](docs/SECURITY-OVERVIEW.md) | Controls you can point at, and what has not been done |
