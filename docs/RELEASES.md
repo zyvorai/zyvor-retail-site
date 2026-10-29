@@ -11,7 +11,7 @@ GitHub Releases on this repository publish the small files the guided trial uses
 | `zyvor-retail-install.tar.gz` | Compose file and `install.sh` that `get.sh` downloads. |
 | `SHA256SUMS` | Checksums. `get.sh` refuses to run on a mismatch. |
 
-The container image is `ghcr.io/zyvorai/zyvor-retail:<version>` (public pull for the trial).
+The container image is `ghcr.io/zyvorai/zyvor-retail-site:<version>` (public pull for the trial).
 
 ## Commands
 
