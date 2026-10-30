@@ -15,4 +15,4 @@ There is no application source in this repository, so reports about source code 
 
 ## What to expect
 
-Zyvor Retail is a pilot release (0.11.0) with no independent security review yet. See the [security overview](docs/SECURITY-OVERVIEW.md) for the controls in place and what has not been done.
+Zyvor Retail is a pilot release (0.20.0) with no independent security review yet. See the [security overview](docs/SECURITY-OVERVIEW.md) for the controls in place and what has not been done.

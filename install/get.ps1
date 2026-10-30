@@ -40,8 +40,36 @@ function Exit-Install([string]$Message) { throw "Zyvor Retail install: $Message"
 function Get-WindowsBuild { return [int][Environment]::OSVersion.Version.Build }
 function Test-WslPresent { return [bool](Get-Command wsl.exe -ErrorAction SilentlyContinue) }
 function Invoke-WslRaw([string[]]$WslArgs) {
-  $out = & wsl.exe @WslArgs 2>&1 | ForEach-Object { ([string]$_) -replace "`0", '' }
-  return [pscustomobject]@{ Code = $LASTEXITCODE; Lines = @($out) }
+  # wsl.exe may exist while the optional Windows feature is still off; its stderr must not
+  # become a terminating ErrorRecord under $ErrorActionPreference = 'Stop'.
+  $prev = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try {
+    $raw = & wsl.exe @WslArgs 2>&1
+    $code = [int]$LASTEXITCODE
+    $lines = @(
+      foreach ($o in @($raw)) {
+        if ($o -is [System.Management.Automation.ErrorRecord]) { ($o.ToString() -replace "`0", '') }
+        else { ([string]$o) -replace "`0", '' }
+      }
+    )
+    return [pscustomobject]@{ Code = $code; Lines = $lines }
+  } finally {
+    $ErrorActionPreference = $prev
+  }
+}
+function Test-WslFeatureReady {
+  if (-not (Test-WslPresent)) { return $false }
+  $probe = Invoke-WslRaw @('-l', '-v')
+  $joined = ($probe.Lines -join ' ')
+  if ($joined -match 'not installed|Windows Subsystem for Linux|has no installed distributions|WSL_E_WSL_OPTIONAL_COMPONENT') {
+    return $false
+  }
+  return ($probe.Code -eq 0)
+}
+function Test-IsAdministrator {
+  $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+  return (New-Object Security.Principal.WindowsPrincipal($id)).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 function Open-Url([string]$Url) { Start-Process $Url }
 function Confirm-Step([string]$Question, [switch]$AutoYes) {
@@ -50,8 +78,36 @@ function Confirm-Step([string]$Question, [switch]$AutoYes) {
   return ($a -eq '' -or $a -match '^(y|yes)$')
 }
 function Invoke-Elevated([string]$Exe, [string[]]$ArgList) {
+  # Already-elevated sessions (e.g. admin auto-logon) must not use -Verb RunAs — UAC often returns -1.
+  if (Test-IsAdministrator) {
+    $p = Start-Process -FilePath $Exe -ArgumentList $ArgList -Wait -PassThru -NoNewWindow
+    return [int]$p.ExitCode
+  }
   $p = Start-Process -FilePath $Exe -ArgumentList $ArgList -Verb RunAs -Wait -PassThru
   return [int]$p.ExitCode
+}
+function Enable-WslWindowsFeatures {
+  # Turn on the optional components WSL2 needs before installing a distro. Returns $true if Windows must reboot.
+  $names = @('Microsoft-Windows-Subsystem-Linux', 'VirtualMachinePlatform')
+  $needReboot = $false
+  foreach ($name in $names) {
+    $state = $null
+    try {
+      $state = Get-WindowsOptionalFeature -Online -FeatureName $name -ErrorAction Stop
+    } catch {
+      $state = $null
+    }
+    if ($state -and $state.State -eq 'Enabled') { continue }
+    Say "Enabling Windows feature '$name'..."
+    $dismArgs = @('/online', '/enable-feature', "/featurename:$name", '/all', '/norestart')
+    $code = Invoke-Elevated 'dism.exe' $dismArgs
+    # DISM: 0 = ok, 3010 = ok but reboot required, 50 = already enabled on some builds
+    if ($code -notin 0, 3010, 50) {
+      Exit-Install "enabling Windows feature '$name' failed (dism exit $code). In an administrator PowerShell run: dism /online /enable-feature /featurename:$name /all"
+    }
+    if ($code -eq 3010) { $needReboot = $true }
+  }
+  return $needReboot
 }
 
 function ConvertFrom-WslList([string[]]$Lines) {
@@ -100,7 +156,8 @@ function Invoke-Retail {
   $argText = $list -join ' '
 
   if ($DryRun) {
-    Say "[dry-run] would check: Windows build 19041 or later, wsl.exe, a WSL 2 distribution, a container engine plus curl and openssl inside it"
+    Say "[dry-run] would check: Windows build 19041 or later, wsl.exe, WSL optional features (Virtual Machine Platform), a WSL 2 distribution, a container engine plus curl and openssl inside it"
+    Say "[dry-run] would enable Microsoft-Windows-Subsystem-Linux and VirtualMachinePlatform via DISM if they are off"
     if ($InstallPodman) { Say "[dry-run] would install podman, podman-compose, curl and openssl in WSL if missing (Debian/Ubuntu only)" }
     Say "[dry-run] would run in WSL: curl -fsSL $base/get.sh | sh -s -- $argText"
     if ($list[0] -eq 'up') { Say "[dry-run] would then open the address the installer prints" }
@@ -113,15 +170,34 @@ function Invoke-Retail {
   $list1 = Invoke-WslRaw @('-l', '-v')
   $rows = @()
   if ($list1.Code -eq 0) { $rows = @(ConvertFrom-WslList $list1.Lines) }
+  $joined = ($list1.Lines -join ' ')
+  $featureMissing = ($joined -match 'not installed|Windows Subsystem for Linux|WSL_E_WSL_OPTIONAL_COMPONENT') -or (-not (Test-WslFeatureReady))
   $usable = @($rows | Where-Object { $_.Name -notmatch '^docker-desktop' })
-  if ($usable.Count -eq 0) {
+  if ($featureMissing -or $usable.Count -eq 0) {
     if (-not (Confirm-Step 'WSL 2 with Ubuntu is not set up on this PC. Install it now? (Windows asks for administrator approval, and you restart Windows afterwards)' -AutoYes:$Yes)) {
       Exit-Install "WSL 2 is required. In an administrator PowerShell run: wsl --install -d Ubuntu  (then restart Windows and run this again)."
     }
-    $code = Invoke-Elevated 'wsl.exe' @('--install', '-d', 'Ubuntu')
+    $rebootForFeatures = Enable-WslWindowsFeatures
+    if ($rebootForFeatures) {
+      Say 'Windows features for WSL 2 are enabled. Restart Windows, then run the same command again to finish installing Ubuntu.'
+      return
+    }
+    # Features on: install Ubuntu. Prefer web download so the Microsoft Store is not required.
+    $code = Invoke-Elevated 'wsl.exe' @('--install', '-d', 'Ubuntu', '--web-download', '--no-launch')
+    if ($code -ne 0) {
+      $code = Invoke-Elevated 'wsl.exe' @('--install', '-d', 'Ubuntu')
+    }
     if ($code -ne 0) { Exit-Install "wsl --install exited with code $code. Run it yourself in an administrator PowerShell: wsl --install -d Ubuntu" }
-    Say 'WSL and Ubuntu are installed. Restart Windows, open Ubuntu once from the Start menu to create your Linux user, then run the same command again.'
-    return
+    # Distro may already be usable without reboot when features were already on.
+    $after = Invoke-WslRaw @('-l', '-v')
+    $afterRows = @()
+    if ($after.Code -eq 0) { $afterRows = @(ConvertFrom-WslList $after.Lines) }
+    $afterUsable = @($afterRows | Where-Object { $_.Name -notmatch '^docker-desktop' })
+    if ($afterUsable.Count -eq 0) {
+      Say 'WSL and Ubuntu are installed. Restart Windows, open Ubuntu once from the Start menu to create your Linux user, then run the same command again.'
+      return
+    }
+    $rows = $afterRows
   }
   $d = Select-Distro $rows $Distro
   if ($d.Version -ne 2) {
