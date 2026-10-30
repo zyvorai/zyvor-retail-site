@@ -1,6 +1,6 @@
 # Releases and the one-command trial
 
-**Pilot release 0.21.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.22.0 · Fictional data only · Not a certified tax or accounting system.**
 
 GitHub Releases on this repository publish the small files the guided trial uses. There is **no application source** in these assets.
 

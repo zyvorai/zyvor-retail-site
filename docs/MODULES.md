@@ -1,6 +1,6 @@
 # Modules
 
-**Pilot release 0.21.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.22.0 · Fictional data only · Not a certified tax or accounting system.**
 
 Ten workspaces, from point of sale to settings. Each row below is implemented and covered by the repository's tests; the limits are in [Intended use and limits](INTENDED-USE.md).
 
@@ -8,7 +8,7 @@ Ten workspaces, from point of sale to settings. Each row below is implemented an
 |---|---|
 | **Point of sale** | Barcode / alt-barcode scan, product search, customers, manager discounts, promotion codes, cash / card / UPI and split tenders, on-account credit, stub SoftPOS intents, printable tax invoices, shifts with counted-versus-expected cash, weighed qty prompt when `unit_scale` is set, serial pick on serial-tracked SKUs, exchange with price-match |
 | **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, variants, image URL, CSV import, effective-dated price schedules |
-| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, immediate and in-transit transfers, stock-count sessions that detect conflicts, serials, bins, recalls, reorder and expiry suggestions |
+| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, immediate and in-transit transfers, stock-count sessions that detect conflicts, serials, bins, recalls, reorder and expiry suggestions with one-click Propose→Apply (dated markdown or draft PO) |
 | **Purchasing** | Suppliers, multi-line purchase orders, RFQ → quote → award, approval gate, partial receipts with input tax / RCM, three-way match field, unique invoice numbers, replenishment drafts, supplier catalogue SKU/cost, supplier returns with RMA link and cash refunds against credits |
 | **Pickup storefront** | Public catalogue, pickup/delivery requests, stock reserve, stub OTP and shipments, shop register/login, tracking. Collection links atomically to the sale. |
 | **Customers and loyalty** | Company-wide directory with consent, merge, credit limit, phone/email duplicate suggestions, privacy export/erase; earn × multiplier or dated campaign `earn_bps` into FEFO lots, redeem ₹1/pt, tiers, expire |
@@ -25,7 +25,7 @@ Ten workspaces, from point of sale to settings. Each row below is implemented an
 
 ## Made for speed
 
-- The overview ranks what needs attention: expired stock, low stock, pickup requests, due tasks. One clear action per item. Or ask: "What should I reorder?" / tax questions answered from journals (not tax advice).
+- The overview ranks what needs attention: expired stock, low stock, pickup requests, due tasks. One clear action per item. Suggestions and Zyntra inbox proposals Apply with a manager click (never auto). Or ask: "What should I reorder?" / tax questions answered from journals (not tax advice).
 - Scan a barcode and it is in the bag. `/` searches, `+` and `-` change quantity, `Cmd+K` finds anything, `?` lists every shortcut.
 - Type the cash received and see the change due, or how much is short. Split tenders on one sale when needed.
 - Click any column to sort, switch to compact rows, and open a product, customer, batch or receipt for the full story without leaving the page.
@@ -34,6 +34,6 @@ Ten workspaces, from point of sale to settings. Each row below is implemented an
 
 ## Not built yet
 
-Live NIC/GSTN submission, live SoftPOS / bank / SMS / shipping / ESC-POS drivers, live supplier EDI / CDP campaign sync, payroll and rostering, Companies Act depreciation schedules, forecasting beyond Suggestions, PostgreSQL / application HA.
+Live NIC/GSTN submission, live SoftPOS / bank / SMS / shipping / ESC-POS drivers, live supplier EDI / CDP campaign sync, auto-apply without a human click, payroll and rostering, Companies Act depreciation schedules, forecasting beyond Suggestions, PostgreSQL / application HA.
 
 Back to the [documentation index](README.md).
