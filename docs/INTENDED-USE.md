@@ -1,6 +1,6 @@
 # Intended use and limits
 
-**Pilot release 0.24.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.25.0 · Fictional data only · Not a certified tax or accounting system.**
 
 A long feature list does not prove a commercial launch. This is what Zyvor Retail is not, yet, taken from the product's own release scope.
 
@@ -11,11 +11,11 @@ A long feature list does not prove a commercial launch. This is what Zyvor Retai
 | **Payments and hardware** | Tenders are recorded, not initiated (stub SoftPOS intents). Cash/card/UPI split and on-account credit are supported. No live payment gateway, calibrated scale drivers or fiscal printer drivers. |
 | **Offline** | Service worker caches the console shell; a loaded tab keeps a pending checkout for manual retry and a last catalogue snapshot for brief disconnect. It is not a full offline POS. |
 | **Ask your store** | Read-only questions from your own records, including a GST liability view from journals. Built-in rules understand a limited set of questions; a language model you connect (off by default) can still be wrong. Not tax advice. |
-| **Suggestions** | Statistical estimates from your own sales, not a trained model. They need about three weeks of history, do not know about promotions or festivals, and use one lead time for the whole store. Nothing is ordered or marked down unless a person submits it. |
+| **Suggestions** | Statistical estimates from your own sales, not a trained model. They need about three weeks of history and do not know about promotions or festivals. Lead time defaults store-wide; a supplier’s lead days (via catalogue or open PO) can override per product. Nothing is ordered or marked down unless a person submits it. Invoice paste and supplier message drafts are review-only until you create a PO. |
 | **Storefront** | Pickup and delivery requests with stock reserve, stub OTP/ship, shop accounts. No live SMS OTP carriers or live shipping APIs. |
 | **Security** | Optional TOTP MFA and OIDC SSO (off by default). No independent review yet, no audit signing, no encrypted application fields. |
 | **Scale** | One application instance on SQLite. No application high availability and no PostgreSQL migration yet; container and cluster validation is still to be run in your environment. |
-| **Not built yet** | Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, supplier catalogues, CRM campaigns, payroll/rostering, Companies Act depreciation packs, forecasting beyond Suggestions. |
+| **Not built yet** | Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, invoice photo OCR, image CDN, CRM automation, payroll/rostering, Companies Act depreciation packs, forecasting beyond Suggestions. |
 
 ## In practice
 

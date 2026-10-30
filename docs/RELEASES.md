@@ -1,6 +1,6 @@
 # Releases and the one-command trial
 
-**Pilot release 0.24.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.25.0 · Fictional data only · Not a certified tax or accounting system.**
 
 GitHub Releases on this repository publish the small files the guided trial uses. There is **no application source** in these assets.
 
@@ -26,3 +26,7 @@ curl -fsSL https://github.com/zyvorai/zyvor-retail-site/releases/latest/download
 Read the installer first if you like: download `get.sh`, open it, then run `sh get.sh up --demo`.
 
 Guided steps: [Try it](https://zyvorai.github.io/zyvor-retail-site/try/).
+
+## 0.25.0
+
+Invoice text paste → draft PO, local product photos, park sale with optional stock hold, per-supplier lead days in Suggestions, copy-only supplier reorder message. Schema **20**.
