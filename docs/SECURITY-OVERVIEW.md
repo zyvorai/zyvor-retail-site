@@ -1,6 +1,6 @@
 # Security overview
 
-**Pilot release 0.20.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.21.0 · Fictional data only · Not a certified tax or accounting system.**
 
 The controls you can point at in a pilot, and what has **not** been done. To report a vulnerability, read [SECURITY.md](../SECURITY.md).
 

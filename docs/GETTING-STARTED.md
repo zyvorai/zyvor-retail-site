@@ -1,6 +1,6 @@
 # Getting started
 
-**Pilot release 0.20.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.21.0 · Fictional data only · Not a certified tax or accounting system.**
 
 Three ways to try Zyvor Retail: a one-command install on your computer, a live demo in the browser, or a source ZIP for evaluators.
 

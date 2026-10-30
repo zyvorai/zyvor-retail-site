@@ -1,6 +1,6 @@
 # Intended use and limits
 
-**Pilot release 0.20.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.21.0 · Fictional data only · Not a certified tax or accounting system.**
 
 A long feature list does not prove a commercial launch. This is what Zyvor Retail is not, yet, taken from the product's own release scope.
 
