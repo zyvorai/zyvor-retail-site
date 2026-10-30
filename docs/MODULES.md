@@ -1,17 +1,17 @@
 # Modules
 
-**Pilot release 0.22.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.24.0 · Fictional data only · Not a certified tax or accounting system.**
 
 Ten workspaces, from point of sale to settings. Each row below is implemented and covered by the repository's tests; the limits are in [Intended use and limits](INTENDED-USE.md).
 
 | Module | What it covers |
 |---|---|
-| **Point of sale** | Barcode / alt-barcode scan, product search, customers, manager discounts, promotion codes, cash / card / UPI and split tenders, on-account credit, stub SoftPOS intents, printable tax invoices, shifts with counted-versus-expected cash, weighed qty prompt when `unit_scale` is set, serial pick on serial-tracked SKUs, exchange with price-match |
+| **Point of sale** | Barcode / alt-barcode scan, product search, customers, manager discounts and price-match, promotion codes, cash / card / UPI and split tenders, on-account credit, park/recall bags, stub SoftPOS intents, printable tax invoices, shifts with deposit/paid-out and counted-versus-expected cash, weighed qty prompt when `unit_scale` is set, serial pick on serial-tracked SKUs, exchange with price-match |
 | **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, variants, image URL, CSV import, effective-dated price schedules |
 | **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, immediate and in-transit transfers, stock-count sessions that detect conflicts, serials, bins, recalls, reorder and expiry suggestions with one-click Propose→Apply (dated markdown or draft PO) |
-| **Purchasing** | Suppliers, multi-line purchase orders, RFQ → quote → award, approval gate, partial receipts with input tax / RCM, three-way match field, unique invoice numbers, replenishment drafts, supplier catalogue SKU/cost, supplier returns with RMA link and cash refunds against credits |
-| **Pickup storefront** | Public catalogue, pickup/delivery requests, stock reserve, stub OTP and shipments, shop register/login, tracking. Collection links atomically to the sale. |
-| **Customers and loyalty** | Company-wide directory with consent, merge, credit limit, phone/email duplicate suggestions, privacy export/erase; earn × multiplier or dated campaign `earn_bps` into FEFO lots, redeem ₹1/pt, tiers, expire |
+| **Purchasing** | Suppliers, multi-line purchase orders (cancel when unreceived), RFQ → quote → award, approval gate, partial receipts with input tax / RCM, three-way match field, unique invoice numbers, replenishment drafts, supplier catalogue SKU/cost, supplier returns with multi-line RMA limits and cash refunds against credits |
+| **Pickup storefront** | Public catalogue, pickup/delivery with preferred time slot, stock reserve, stub OTP and shipments, shop register/login, tracking. Collection links atomically to the sale. |
+| **Customers and loyalty** | Company-wide directory with consent, merge, credit limit, phone/email duplicate suggestions, privacy export/erase; earn × multiplier or dated storewide/SKU campaign `earn_bps` into FEFO lots, redeem ₹1/pt, tiers, expire |
 
 ## The books
 

@@ -1,6 +1,6 @@
 # FAQ
 
-**Pilot release 0.22.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.24.0 · Fictional data only · Not a certified tax or accounting system.**
 
 ### Can I run my real shop on it today?
 Treat it as a pilot. The core trading, stock, GST invoice and ledger flows work and are tested, but payment gateways, hardware drivers and certified statutory filing are not there. Pilot it alongside your existing process first. See [Intended use and limits](INTENDED-USE.md).
