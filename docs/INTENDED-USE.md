@@ -15,7 +15,8 @@ A long feature list does not prove a commercial launch. This is what Zyvor Retai
 | **Storefront** | Pickup and delivery requests with stock reserve, stub OTP/ship, shop accounts. No live SMS OTP carriers or live shipping APIs. |
 | **Security** | Optional TOTP MFA and OIDC SSO (off by default). No independent review yet, no audit signing, no encrypted application fields. |
 | **Scale** | One application instance on SQLite. No application high availability and no PostgreSQL migration yet; container and cluster validation is still to be run in your environment. |
-| **Not built yet** | Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, invoice photo OCR, image CDN, CRM automation, payroll/rostering, Companies Act depreciation packs, forecasting beyond Suggestions. |
+| **Migration** | CSV/Excel import for products (upsert), customers, suppliers and opening stock from Tally/Vyapar-style exports. No native Tally `.tsf` / Busy DB readers; no historical ledger replay. |
+| **Not built yet** | Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, invoice photo OCR, image CDN, CRM automation, payroll/rostering, Companies Act depreciation packs, forecasting beyond Suggestions, native accounting-DB import. |
 
 ## In practice
 

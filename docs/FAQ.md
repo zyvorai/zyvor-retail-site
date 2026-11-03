@@ -21,7 +21,10 @@ Several under one company: per-branch records, a shared customer directory and c
 In a SQLite database on infrastructure you run, with a verified backup job in the Kubernetes deployment. Existing databases upgrade through numbered transactional migrations.
 
 ### Does it do GST or e-invoicing?
-Pilot tax invoices (INV/CN), CGST/SGST/IGST and GSTR-1 CSV export are included. This is not certified GST software, not e-invoicing, and not live GSTN filing. Not a certified accounting system.
+Pilot tax invoices (INV/CN/DN), CGST/SGST/IGST, GSTR worksheets and stub IRN/e-Way are included. This is not certified GST software and not live GSTN filing. Not a certified accounting system.
+
+### Can I migrate from Tally or Vyapar?
+Export items, parties and opening quantities as CSV or Excel from the old app, then import products, customers, suppliers and opening stock in Settings (or the CLI). Templates and column aliases are included. Zyvor does not read native Tally `.tsf` or Busy database files, and it does not replay historical ledgers.
 
 ### Can it take card payments?
 Tenders (cash, card and UPI, including cash+UPI split) are **recorded, not initiated.** There is no payment gateway.

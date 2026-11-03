@@ -29,7 +29,7 @@ Guided steps: [Try it](https://zyvorai.github.io/zyvor-retail-site/try/).
 
 ## 0.26.0
 
-Native desktop shell (Tauri + sidecar), deeper India GST (debit notes, advances, CMP-08, GSTR-9, portal 2A JSON), CSV/Excel migration import for products, customers, suppliers, and opening stock. Schema **21**.
+Native desktop shell (Tauri + sidecar; unsigned MSI/NSIS/DMG/AppImage packaging scripts), deeper India GST worksheets (debit notes, advances, CMP-08, GSTR-9, portal 2A JSON — not live GSTN filing), CSV/Excel migration import for products, customers, suppliers, and opening stock. Schema **21**. **294** automated tests in the private source tree.
 
 ## 0.25.0
 

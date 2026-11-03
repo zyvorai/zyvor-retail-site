@@ -27,7 +27,7 @@ The installer prints an email and password, opens `http://127.0.0.1:8080`, and s
 ~/.zyvor-retail/zyvor-retail uninstall   # remove containers and data
 ```
 
-Release assets and checksums: [Releases](RELEASES.md).
+Release assets and checksums: [Releases](RELEASES.md). Evaluators with source can also build an optional **native desktop** shell (Tauri + sidecar) for macOS / Linux / Windows; that path is separate from this container trial and is not durable offline POS.
 
 ### Read the installer first
 

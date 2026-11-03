@@ -19,7 +19,7 @@
 
 This repository is the **public home of the Zyvor Retail website**. The application source is private; you can ask for access to evaluate it.
 
-| **10** workspaces, from point of sale to settings | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **275** automated tests in the repository |
+| **10** workspaces, from point of sale to settings | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **294** automated tests in the repository |
 |:---:|:---:|:---:|:---:|
 
 ---
@@ -73,11 +73,11 @@ All of them: **[Gallery](docs/GALLERY.md)**.
 | Module | What it covers |
 |---|---|
 | **Point of sale** | Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI (including cash+UPI split), printable tax invoices, shifts with counted-versus-expected cash |
-| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, CSV import from the browser or the command line |
-| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, stock-count sessions that detect conflicts, reorder and expiry suggestions that show their arithmetic |
-| **Purchasing** | Suppliers, multi-line purchase orders, partial receipts with input tax, unique invoice numbers, replenishment drafts, supplier returns against credits |
+| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, CSV/Excel import with upsert from the browser or the command line |
+| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, stock-count sessions that detect conflicts, opening-stock CSV/Excel import, reorder and expiry suggestions that show their arithmetic |
+| **Purchasing** | Suppliers, multi-line purchase orders, partial receipts with input tax, unique invoice numbers, replenishment drafts, CSV/Excel supplier import, supplier returns against credits |
 | **Pickup storefront** | A public catalogue with product sheets, a bag that counts, and a pickup request that ends in a clear timeline |
-| **Customers and loyalty** | One company-wide directory with a consent flag; one point earned per ₹100, reversed if the sale is returned |
+| **Customers and loyalty** | One company-wide directory with a consent flag and CSV/Excel import; one point earned per ₹100, reversed if the sale is returned |
 
 Every row is implemented and covered by the repository's tests. Details: **[Modules](docs/MODULES.md)**.
 
@@ -91,9 +91,9 @@ Hashed passwords, opaque HttpOnly sessions, CSRF protection, persistent throttle
 
 ## From a laptop to a cluster
 
-| Local | Compose with HTTPS | Kubernetes |
+| Local / desktop | Compose with HTTPS | Kubernetes |
 |---|---|---|
-| Python 3.12 with SQLite. One command, no packages, no build step, nothing leaves your machine. | A standalone stack with Envoy terminating TLS, redirects, rate limits and private operations routes. | Non-root pods, probes, default-deny network policies, data and backup volumes, an edge-only autoscaler and a scheduled verified backup. |
+| Python 3.12 with SQLite, or an optional native desktop shell (Tauri + sidecar) for macOS / Linux / Windows. One command, no packages, no build step, nothing leaves your machine. | A standalone stack with Envoy terminating TLS, redirects, rate limits and private operations routes. | Non-root pods, probes, default-deny network policies, data and backup volumes, an edge-only autoscaler and a scheduled verified backup. |
 
 ---
 
@@ -122,12 +122,13 @@ Evaluators who need the private source can still [ask sales for a ZIP](mailto:sa
 ## Honest limits
 
 - **Maturity.** A pilot release with a working core. Pilot it alongside your existing process first.
-- **Tax and statutory.** Pilot tax invoices, CGST/SGST/IGST and GSTR-1 CSV are included. Not certified GST, not e-invoicing, not live GSTN filing, no period close or year-end. **Not a certified accounting system.**
-- **Payments and hardware.** Tenders are recorded, not initiated. Cash+UPI split is supported. No payment gateway, credit sales, calibrated scales or fiscal printer drivers.
-- **Offline.** Service worker caches the console shell; a loaded tab keeps a pending checkout for manual retry. It is not a full offline POS.
+- **Tax and statutory.** Pilot tax invoices, GSTR worksheets, stub IRN/e-Way and period lock/close are included. Not certified GST, not live GSTN filing. **Not a certified accounting system.**
+- **Migration.** Import products, customers, suppliers and opening stock from Tally/Vyapar-style CSV/Excel exports. No native Tally `.tsf` / Busy DB readers.
+- **Payments and hardware.** Tenders are recorded, not initiated. Cash+UPI split and on-account credit are supported. No live payment gateway, calibrated scales or fiscal printer drivers.
+- **Offline.** Service worker caches the console shell; a loaded tab keeps a pending checkout for manual retry. Native desktop is not durable offline POS.
 - **Suggestions.** Statistical estimates from your own sales, not a trained model. Nothing is ordered or marked down unless a person submits it.
-- **Storefront.** Pickup only: no online payment, accounts, delivery, reserved stock or order tracking.
-- **Security.** No independent review yet, no MFA of its own, no audit signing, no encrypted application fields. Optional OIDC SSO is available and off by default.
+- **Storefront.** Pickup and delivery requests with stock reserve; no live SMS OTP or shipping APIs.
+- **Security.** Optional TOTP MFA and OIDC SSO (off by default). No independent review yet, no audit signing, no encrypted application fields.
 - **Scale.** One application instance on SQLite. No high availability and no PostgreSQL migration yet.
 
 The full table and what is not built yet: **[Intended use and limits](docs/INTENDED-USE.md)**.
