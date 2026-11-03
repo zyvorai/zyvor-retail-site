@@ -1,24 +1,25 @@
 # Modules
 
-**Pilot release 0.25.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.26.0 · Fictional data only · Not a certified tax or accounting system.**
 
 Ten workspaces, from point of sale to settings. Each row below is implemented and covered by the repository's tests; the limits are in [Intended use and limits](INTENDED-USE.md).
 
 | Module | What it covers |
 |---|---|
 | **Point of sale** | Barcode / alt-barcode scan, product search, customers, manager discounts and price-match, promotion codes, cash / card / UPI and split tenders, on-account credit, park/recall bags with optional stock hold, stub SoftPOS intents, printable tax invoices, shifts with deposit/paid-out and counted-versus-expected cash, weighed qty prompt when `unit_scale` is set, serial pick on serial-tracked SKUs, exchange with price-match |
-| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, variants, image URL or local JPEG/PNG/WebP attach, CSV import, effective-dated price schedules |
-| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, immediate and in-transit transfers, stock-count sessions that detect conflicts, serials, bins, recalls, reorder and expiry suggestions with one-click Propose→Apply (dated markdown or draft PO); per-supplier lead days when set |
-| **Purchasing** | Suppliers (optional lead days), multi-line purchase orders (cancel when unreceived), RFQ → quote → award, approval gate, partial receipts with input tax / RCM, three-way match field, unique invoice numbers, invoice text paste → draft PO, copy-only supplier reorder message, replenishment drafts, supplier catalogue SKU/cost, supplier returns with multi-line RMA limits and cash refunds against credits |
+| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, variants, image URL or local JPEG/PNG/WebP attach, CSV/XLSX import with upsert and column aliases, effective-dated price schedules |
+| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, immediate and in-transit transfers, stock-count sessions that detect conflicts, serials, bins, recalls, opening-stock CSV/XLSX import, reorder and expiry suggestions with one-click Propose→Apply (dated markdown or draft PO); per-supplier lead days when set |
+| **Purchasing** | Suppliers (optional lead days), multi-line purchase orders (cancel when unreceived), RFQ → quote → award, approval gate, partial receipts with input tax / RCM, three-way match field, unique invoice numbers, invoice text paste → draft PO, copy-only supplier reorder message, replenishment drafts, supplier catalogue SKU/cost, CSV/XLSX supplier import, supplier returns with multi-line RMA limits and cash refunds against credits |
 | **Pickup storefront** | Public catalogue, pickup/delivery with preferred time slot, stock reserve, stub OTP and shipments, shop register/login, tracking. Collection links atomically to the sale. |
-| **Customers and loyalty** | Company-wide directory with consent, merge, credit limit, phone/email duplicate suggestions, privacy export/erase; earn × multiplier or dated storewide/SKU campaign `earn_bps` into FEFO lots, redeem ₹1/pt, tiers, expire |
+| **Customers and loyalty** | Company-wide directory with consent, merge, credit limit, phone/email duplicate suggestions, privacy export/erase, CSV/XLSX customer import; earn × multiplier or dated storewide/SKU campaign `earn_bps` into FEFO lots, redeem ₹1/pt, tiers, expire |
 
 ## The books
 
 **Stock and money cannot disagree.** A sale, a receipt, a write-off and a return each write to the stock ledger and to the double-entry journal in the same transaction. There is no end-of-day sync to forget.
 
 - **One commit, two ledgers.** Quoted prices and discounts are checked again at commit. A retried checkout is idempotent and never consumes a promotion twice.
-- **GST worksheets in-app.** GSTR-1 / GSTR-3B worksheets, ITC claim/utilise/reverse/dispute, composition (+ rate accrual), TCS/TDS withhold + CSV, ISD branch transfer, stub IRN/e-Way and GSTR upload/2A/2B. Not live GSTN filing.
+- **GST worksheets in-app.** GSTR-1 / GSTR-3B / CMP-08 / GSTR-9 worksheets, debit notes and advances, ITC claim/utilise/reverse/dispute, composition (+ rate accrual), TCS/TDS withhold + CSV, ISD branch transfer, stub/sandbox IRN/e-Way and GSTR upload/2A/2B JSON import. Not live GSTN filing.
+- **Desktop and migration.** Optional native desktop shell; import masters from Tally/Vyapar-style CSV/Excel exports (not native DB readers).
 - **Answers, not exports.** Revenue, margin, inventory value, supplier balances, trial balance, date-range profit, paginated journals, year-end pack, royalty report, plus stock and sales CSVs with formula-injection protection.
 - **Fixed assets & checklists.** Straight-line depreciation journals; outlet checklist templates, runs, and `schedule_days` spawn.
 - **Boundary: not certified GST.** Tax invoices and credit notes with CGST/SGST/IGST are included for pilot use; this is not live NIC/GSTN filing and not a certified accounting system.
