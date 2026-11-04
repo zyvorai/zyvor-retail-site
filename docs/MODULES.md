@@ -1,6 +1,6 @@
 # Modules
 
-**Pilot release 0.26.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.26.2 · Fictional data only · Not a certified tax or accounting system.**
 
 Ten workspaces, from point of sale to settings. Each row below is implemented and covered by the repository's tests; the limits are in [Intended use and limits](INTENDED-USE.md).
 

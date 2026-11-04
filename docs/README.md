@@ -1,6 +1,6 @@
 # Zyvor Retail documentation
 
-**Pilot release 0.26.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.26.2 · Fictional data only · Not a certified tax or accounting system.**
 
 These pages are for people evaluating Zyvor Retail: shop owners, managers and the IT people who would run it. There is no application source in this repository.
 
