@@ -219,9 +219,12 @@ function Invoke-Retail {
     }
     $os = Invoke-WslRaw @('-d', $name, '-e', 'sh', '-c', '. /etc/os-release; echo "$ID $ID_LIKE"')
     if (($os.Lines -join ' ') -notmatch 'debian|ubuntu') { Exit-Install "-InstallPodman supports Debian and Ubuntu only; install podman, podman-compose, curl and openssl in '$name' yourself." }
-    Say "Installing podman, podman-compose, curl and openssl in '$name' (needs a minute)..."
-    $inst = Invoke-WslRaw @('-d', $name, '-u', 'root', '-e', 'sh', '-c', 'apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq podman podman-compose curl openssl')
-    if ($inst.Code -ne 0) { Exit-Install "installing the packages failed: $(($inst.Lines | Select-Object -Last 5) -join ' ')" }
+    Say "Installing podman, podman-compose, curl, openssl, apt-utils in '$name' (usually under a minute)..."
+    $inst = Invoke-WslRaw @('-d', $name, '-u', 'root', '-e', 'sh', '-c', 'export DEBIAN_FRONTEND=noninteractive; apt-get update -qq && apt-get install -y podman podman-compose curl openssl apt-utils')
+    if ($inst.Code -ne 0) {
+      foreach ($l in $inst.Lines) { Say $l }
+      Exit-Install "installing the packages failed: $(($inst.Lines | Select-Object -Last 5) -join ' ')"
+    }
   }
 
   Say "Running: curl -fsSL $base/get.sh | sh -s -- $argText"
@@ -235,8 +238,22 @@ function Invoke-Retail {
   if ($code -ne 0) { Exit-Install "the installer in WSL exited with code $code (see the messages above)." }
 
   if ($list[0] -eq 'up') {
-    $url = $null
-    foreach ($l in $captured) { if ($l -match 'is running:\s+(https?://\S+)') { $url = $Matches[1] } }
+    $url = $null; $email = $null; $pass = $null
+    foreach ($l in $captured) {
+      if ($l -match 'is running:\s+(https?://\S+)') { $url = $Matches[1] }
+      if ($l -match 'Sign in at:\s+(https?://\S+)') { $url = $Matches[1] }
+      if ($l -match 'Email:\s+(\S+)') { $email = $Matches[1] }
+      if ($l -match 'Password:\s+(\S+)') { $pass = $Matches[1] }
+    }
+    if ($email -and $pass) {
+      Say ""
+      Say "========== SIGN IN =========="
+      if ($url) { Say "URL:      $url" }
+      Say "Email:    $email"
+      Say "Password: $pass"
+      Say "============================="
+      Say ""
+    }
     if ($url) {
       Say "Opening $url"
       Open-Url $url

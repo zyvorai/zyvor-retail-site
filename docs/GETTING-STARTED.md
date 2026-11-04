@@ -1,6 +1,6 @@
 # Getting started
 
-**Pilot release 0.26.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.26.1 · Fictional data only · Not a certified tax or accounting system.**
 
 Three ways to try Zyvor Retail: a one-command install on your computer, a live demo in the browser, or a source ZIP for evaluators.
 
@@ -14,13 +14,13 @@ One command, about five minutes, Mac / Windows / Linux. Nothing leaves your mach
 curl -fsSL https://github.com/zyvorai/zyvor-retail-site/releases/latest/download/get.sh | sh -s -- up --demo
 ```
 
-**Windows** — open PowerShell, paste (runs inside WSL 2; not yet verified on a real PC):
+**Windows** — open PowerShell, paste (runs inside WSL 2):
 
 ```powershell
 & ([scriptblock]::Create((irm https://github.com/zyvorai/zyvor-retail-site/releases/latest/download/get.ps1))) up --demo
 ```
 
-The installer prints an email and password, opens `http://127.0.0.1:8080`, and seeds a fictional catalogue. Afterwards:
+The installer shows step progress, prints the admin **email and password** (save them), opens `http://127.0.0.1:8080`, and seeds a fictional catalogue. Native Windows desktop uses the NSIS `*-setup.exe` from a source build (see app `docs/INSTALL.md`). Afterwards:
 
 ```bash
 ~/.zyvor-retail/zyvor-retail test        # expect "all checks passed"

@@ -8,7 +8,7 @@
 
 **Sell at the counter, count the shelf, pay the supplier and close the books from one calm console. Built for a company that runs several stores.**
 
-[![Release](https://img.shields.io/badge/pilot%20release-0.26.0-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
+[![Release](https://img.shields.io/badge/pilot%20release-0.26.1-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
 
 [**Try it on your computer**](https://zyvorai.github.io/zyvor-retail-site/try/) · [**Live demo**](https://zyvorai.github.io/zyvor-retail-site/#demo) · [**Watch**](https://zyvorai.github.io/zyvor-retail-site/#watch) · [**Docs**](docs/README.md) · [**Ask about a pilot**](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot)
 
@@ -157,6 +157,6 @@ The full table and what is not built yet: **[Intended use and limits](docs/INTEN
 
 <div align="center">
 
-<sub>Zyvor Retail is built by [Zyvor AI Labs](https://zyvor.dev), who also make [ZYVORA, the hospital OS](https://zyvorai.github.io/zyvor-zyvora-site/). Release 0.26.0 pilot. All screens use fictional data. No application source is published here.</sub>
+<sub>Zyvor Retail is built by [Zyvor AI Labs](https://zyvor.dev), who also make [ZYVORA, the hospital OS](https://zyvorai.github.io/zyvor-zyvora-site/). Release 0.26.1 pilot. All screens use fictional data. No application source is published here.</sub>
 
 </div>

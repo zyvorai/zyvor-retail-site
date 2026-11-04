@@ -1,6 +1,6 @@
 # Releases and the one-command trial
 
-**Pilot release 0.26.0 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.26.1 · Fictional data only · Not a certified tax or accounting system.**
 
 GitHub Releases on this repository publish the small files the guided trial uses. There is **no application source** in these assets.
 
@@ -26,6 +26,10 @@ curl -fsSL https://github.com/zyvorai/zyvor-retail-site/releases/latest/download
 Read the installer first if you like: download `get.sh`, open it, then run `sh get.sh up --demo`.
 
 Guided steps: [Try it](https://zyvorai.github.io/zyvor-retail-site/try/).
+
+## 0.26.1
+
+Smooth Windows desktop install (NSIS Start Menu, WebView2 embed, first-run password card) and clearer one-command trial (step progress, printed admin password). Lab install smoke documents credentials in `LOGIN.txt`. Builds on 0.26.0. Schema **21**. **294** automated tests in the private source tree.
 
 ## 0.26.0
 
