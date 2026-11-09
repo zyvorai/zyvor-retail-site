@@ -53,7 +53,7 @@
   <p class="lede"><strong>Sell at the counter, count the shelf, pay the supplier and close the books</strong> from one calm console. Built for a company that runs several stores.</p>
   <div class="cta"><a class="btn primary" href="try/">Try it on your computer</a><a class="btn" href="#demo">Live demo</a><a class="btn" href="#see">See the screens</a><a class="btn" href="mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot">Ask about a pilot</a></div>
   <ul class="chips" aria-label="Status">
-    <li class="ok">Runs with no packages</li><li class="ok">Keyboard-first</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.26.2</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
+    <li class="ok">Runs with no packages</li><li class="ok">Keyboard-first</li><li>Self-hosted</li><li>Light and dark</li><li class="warn">Pilot release 0.29.0</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified tax system</li>
   </ul>
   <div class="window" role="group" aria-label="A screenshot of the Zyvor Retail overview (synthetic data)"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
     <img class="only-light" src="shots/light-overview.jpg" alt="Zyvor Retail overview: net revenue, gross profit, inventory value and replenishment, with quick actions (synthetic data)" width="1440" height="900" fetchpriority="high" decoding="async"><img class="only-dark" src="shots/dark-overview.jpg" alt="Zyvor Retail overview in dark mode (synthetic data)" width="1440" height="900" loading="lazy" decoding="async"></div>
@@ -61,12 +61,12 @@
 </section>
 
 <section class="band" aria-label="By the numbers">
-  <div><b>10</b><span>workspaces, from point of sale to settings</span></div>
+  <div><b>5</b><span>switchable capability packs</span></div>
   <div><b>5</b><span>staff roles, scoped to branch</span></div>
   <div><b>0</b><span>runtime packages, CDNs or build steps</span></div>
-  <div><b>294</b><span>automated tests in the repository</span></div>
+  <div><b>318</b><span>automated tests in the repository</span></div>
 </section>
-<p class="foot">Counts come from the source repository: the workspace list, the role model, <code>pyproject.toml</code> and the test suite.</p>
+<p class="foot">Counts come from the source repository: capability packs, the role model, <code>pyproject.toml</code> and the test suite.</p>
 
 <section id="watch" class="center">
   <p class="kicker">Watch it</p>
@@ -123,12 +123,12 @@
 <section id="modules">
   <div class="center"><p class="kicker">Modules</p><h2>What a trading day needs.</h2><p class="sub">Each row is implemented and covered by the repository's tests. The limits are on this page too, in <a href="#honest">Honest limits</a>.</p></div>
   <div class="grid">
-    <div class="card rv"><h3>Point of sale</h3><p>Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI (including cash+UPI split), park a bag with optional stock hold, printable tax invoices, shifts with counted-versus-expected cash.</p></div>
-    <div class="card rv"><h3>Catalogue</h3><p>SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, local product photos or an image URL, and CSV/Excel import (with upsert) from the browser or the command line.</p></div>
-    <div class="card rv"><h3>Inventory</h3><p>Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, stock-count sessions that detect conflicts, opening-stock CSV/Excel import, and reorder and expiry suggestions that show their arithmetic (including per-supplier lead days when set).</p></div>
+    <div class="card rv"><h3>Point of sale</h3><p>Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI (including cash+UPI split), gift-card redeem, park a bag with optional stock hold, printable tax invoices, blind Z and X/Z reports.</p></div>
+    <div class="card rv"><h3>Catalogue</h3><p>SKU and barcode uniqueness, categories, prices, tax rates, HSN, daypart schedules, 86/sold-out, allergens and MRP, local product photos or an image URL, and CSV/Excel import (with upsert).</p></div>
+    <div class="card rv"><h3>Restaurant &amp; packs</h3><p>Switchable Restaurant, Aggregators, HR and Tasks packs: floor and KOT, tips, reservations, channel stubs, attendance and pay runs. Enable only what you need beside Retail.</p></div>
+    <div class="card rv"><h3>Inventory</h3><p>Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, stock-count sessions that detect conflicts, opening-stock CSV/Excel import, and reorder and expiry suggestions that show their arithmetic.</p></div>
     <div class="card rv"><h3>Purchasing</h3><p>Suppliers, multi-line purchase orders, invoice text paste into a draft PO, partial receipts with input tax, unique invoice numbers, replenishment drafts, CSV/Excel supplier import, a copy-only supplier message, and supplier returns against credits.</p></div>
-    <div class="card rv"><h3>Pickup storefront</h3><p>A public catalogue with product sheets, a bag that counts, and a pickup request that ends in a clear timeline. Staff mark orders ready or cancelled; collection links atomically to the sale.</p></div>
-    <div class="card rv"><h3>Customers and loyalty</h3><p>One company-wide directory with a consent flag, CSV/Excel customer import, and one point earned per &#8377;100, reversed if the sale is returned.</p></div>
+    <div class="card rv"><h3>Customers and markets</h3><p>Company-wide directory with loyalty and CRM labels; IN/EU/US/UK/AE market profile for currency and locale. Pickup storefront still links collection atomically to the sale.</p></div>
   </div>
 </section>
 
@@ -202,7 +202,7 @@
       <tr><td>Single sign-on</td><td>Optional and off by default. Only people already set up in Retail can sign in: it does not create users or set roles from the provider, and there is no single sign-out. Tested with Keycloak (what Haven runs), not yet with Entra ID, Okta or Google. Passwords still work alongside it.</td></tr>
       <tr><td>Zyntra feed</td><td>An optional, read-only feed of stock, bills, settlements, supplier lead times, queue waits and open shifts for Zyvor Zyntra, on its own access token and with no customer details. Zyntra&rsquo;s approved requests (a markdown, an undo, a purchase-order cancel) arrive as tasks for a manager: Retail never changes a price or an order by itself. Queue waits only exist if staff log them, targets start from a general shop&rsquo;s and should be set from your own history, and it covers one branch at a time. Tested with a Zyntra build from October 2026.</td></tr>
       <tr><td>Scale</td><td>One application instance on SQLite. No application high availability and no PostgreSQL migration yet; container and cluster validation is still to be run in your environment.</td></tr>
-      <tr><td>Not built yet</td><td>Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, invoice photo OCR, image CDN, CRM automation, payroll/rostering, Companies Act depreciation packs, forecasting beyond Suggestions, native Tally/Busy DB import.</td></tr>
+      <tr><td>Not built yet</td><td>Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, live Swiggy/Zomato and gift-card processors, invoice photo OCR, image CDN, WhatsApp Business send, biometric clocks / PF-ESI payroll, Companies Act depreciation packs, forecasting beyond Suggestions, native Tally/Busy DB import.</td></tr>
     </tbody>
   </table>
 </section>
@@ -234,7 +234,7 @@
     <div><h3>Trust</h3><a href="#security">Security</a><a href="#honest">Honest limits</a><a href="#faq">FAQ</a></div>
     <div><h3>Zyvor AI Labs</h3><a href="https://zyvorai.github.io/zyvor-zyvora-site/">ZYVORA, the hospital OS</a><a href="mailto:sales@zyvor.dev">sales@zyvor.dev</a></div>
   </div>
-  <p>&copy; Zyvor AI Labs. Release 0.26.2 pilot. All screens use fictional data.</p>
+  <p>&copy; Zyvor AI Labs. Release 0.29.0 pilot. All screens use fictional data.</p>
 </footer>
 <script src="site.js"></script>
 </body>

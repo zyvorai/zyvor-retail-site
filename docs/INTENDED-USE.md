@@ -1,6 +1,6 @@
 # Intended use and limits
 
-**Pilot release 0.26.2 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.29.0 · Fictional data only · Not a certified tax or accounting system.**
 
 A long feature list does not prove a commercial launch. This is what Zyvor Retail is not, yet, taken from the product's own release scope.
 
@@ -16,7 +16,7 @@ A long feature list does not prove a commercial launch. This is what Zyvor Retai
 | **Security** | Optional TOTP MFA and OIDC SSO (off by default). No independent review yet, no audit signing, no encrypted application fields. |
 | **Scale** | One application instance on SQLite. No application high availability and no PostgreSQL migration yet; container and cluster validation is still to be run in your environment. |
 | **Migration** | CSV/Excel import for products (upsert), customers, suppliers and opening stock from Tally/Vyapar-style exports. No native Tally `.tsf` / Busy DB readers; no historical ledger replay. |
-| **Not built yet** | Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, invoice photo OCR, image CDN, CRM automation, payroll/rostering, Companies Act depreciation packs, forecasting beyond Suggestions, native accounting-DB import. |
+| **Not built yet** | Live NIC/GSTN, live SoftPOS/bank/SMS/ship/ESC-POS, live Swiggy/Zomato and gift-card processors, invoice photo OCR, image CDN, WhatsApp Business send, biometric clocks / PF-ESI payroll, Companies Act depreciation packs, forecasting beyond Suggestions, native accounting-DB import. |
 
 ## In practice
 

@@ -1,6 +1,6 @@
 # Releases and the one-command trial
 
-**Pilot release 0.26.2 · Fictional data only · Not a certified tax or accounting system.**
+**Pilot release 0.29.0 · Fictional data only · Not a certified tax or accounting system.**
 
 GitHub Releases on this repository publish the small files the guided trial uses. There is **no application source** in these assets.
 
@@ -27,13 +27,25 @@ Read the installer first if you like: download `get.sh`, open it, then run `sh g
 
 Guided steps: [Try it](https://zyvorai.github.io/zyvor-retail-site/try/).
 
+## 0.29.0
+
+Switchable capability packs, hospitality depth (tips, modifiers, reservations, aggregator lifecycle, CRM lite), and IN/EU/US table-stakes: gift cards, manager PIN and drawer/Z, markets (currency/locale), 86/MRP/age, daypart prices, tip pool, waste, layaway. Schema **24**. **318** automated tests in the private source tree. Not live Swiggy/Zomato, biometrics, or payment processors.
+
+## 0.28.0
+
+Hospitality depth on packs: tips and voluntary service charge, guest check, modifiers, merge/split settle, tokens, reservations/waitlist, aggregator reject→complete, CRM labels and AR reminders. Schema **23**.
+
+## 0.27.0
+
+Switchable packs in Settings: Restaurant floor/KOT/recipes, aggregator stubs, HR attendance/leave/payroll, task verify/report. Schema **22**.
+
 ## 0.26.2
 
-Smooth Windows desktop install (NSIS Start Menu, WebView2 embed, first-run password card) and clearer one-command trial (step progress, printed admin password). Lab install smoke documents credentials in `LOGIN.txt`. Builds on 0.26.0. Schema **21**. **294** automated tests in the private source tree.
+Smooth Windows desktop install (NSIS Start Menu, WebView2 embed, first-run password card) and clearer one-command trial. Schema **21**.
 
 ## 0.26.0
 
-Native desktop shell (Tauri + sidecar; unsigned MSI/NSIS/DMG/AppImage packaging scripts), deeper India GST worksheets (debit notes, advances, CMP-08, GSTR-9, portal 2A JSON — not live GSTN filing), CSV/Excel migration import for products, customers, suppliers, and opening stock. Schema **21**. **294** automated tests in the private source tree.
+Native desktop shell (Tauri + sidecar), deeper India GST worksheets (debit notes, advances, CMP-08, GSTR-9, portal 2A JSON — not live GSTN filing), CSV/Excel migration import. Schema **21**.
 
 ## 0.25.0
 

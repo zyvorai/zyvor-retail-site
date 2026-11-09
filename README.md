@@ -8,7 +8,7 @@
 
 **Sell at the counter, count the shelf, pay the supplier and close the books from one calm console. Built for a company that runs several stores.**
 
-[![Release](https://img.shields.io/badge/pilot%20release-0.26.2-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
+[![Release](https://img.shields.io/badge/pilot%20release-0.29.0-f0397a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Website](https://img.shields.io/website?url=https%3A%2F%2Fzyvorai.github.io%2Fzyvor-retail-site%2F&label=website&labelColor=1d1d1f&up_color=f0397a)](https://zyvorai.github.io/zyvor-retail-site/) [![Data](https://img.shields.io/badge/data-fictional%20only-30d158?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Tax](https://img.shields.io/badge/tax%20system-not%20certified-ff9f0a?labelColor=1d1d1f)](docs/INTENDED-USE.md) [![Runtime packages](https://img.shields.io/badge/runtime%20packages-0-0a84ff?labelColor=1d1d1d)](docs/MODULES.md) [![Self-hosted](https://img.shields.io/badge/self--hosted-yes-86868b?labelColor=1d1d1f)](docs/GETTING-STARTED.md)
 
 [**Try it on your computer**](https://zyvorai.github.io/zyvor-retail-site/try/) · [**Live demo**](https://zyvorai.github.io/zyvor-retail-site/#demo) · [**Watch**](https://zyvorai.github.io/zyvor-retail-site/#watch) · [**Docs**](docs/README.md) · [**Ask about a pilot**](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20pilot)
 
@@ -19,7 +19,7 @@
 
 This repository is the **public home of the Zyvor Retail website**. The application source is private; you can ask for access to evaluate it.
 
-| **10** workspaces, from point of sale to settings | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **294** automated tests in the repository |
+| **5** switchable capability packs | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **318** automated tests in the repository |
 |:---:|:---:|:---:|:---:|
 
 ---
@@ -72,12 +72,12 @@ All of them: **[Gallery](docs/GALLERY.md)**.
 
 | Module | What it covers |
 |---|---|
-| **Point of sale** | Barcode keyboard input, product search, customers, manager discounts, promotion codes, cash, card and UPI (including cash+UPI split), printable tax invoices, shifts with counted-versus-expected cash |
-| **Catalogue** | SKU and barcode uniqueness, packs, categories, prices, tax rates, HSN, reorder levels, CSV/Excel import with upsert from the browser or the command line |
-| **Inventory** | Batches, expiry blocking, FEFO selling, adjustments at actual batch cost, transfers between stores, stock-count sessions that detect conflicts, opening-stock CSV/Excel import, reorder and expiry suggestions that show their arithmetic |
-| **Purchasing** | Suppliers, multi-line purchase orders, partial receipts with input tax, unique invoice numbers, replenishment drafts, CSV/Excel supplier import, supplier returns against credits |
-| **Pickup storefront** | A public catalogue with product sheets, a bag that counts, and a pickup request that ends in a clear timeline |
-| **Customers and loyalty** | One company-wide directory with a consent flag and CSV/Excel import; one point earned per ₹100, reversed if the sale is returned |
+| **Capability packs** | Toggle Retail, Restaurant, Aggregators, HR and Tasks in Settings; navigation and APIs follow |
+| **Point of sale** | Barcode scan, gift-card redeem, cash/card/UPI split, park/recall, blind Z and printable tax invoices |
+| **Catalogue** | SKUs, daypart prices, 86/MRP/allergens, CSV/Excel import with upsert |
+| **Restaurant / channels / HR** | Floor and KOT, tips, reservations; aggregator stubs; attendance, leave and pay runs (not live delivery APIs or biometrics) |
+| **Inventory & purchasing** | Batches, FEFO, transfers, stock counts, POs, invoice paste, supplier returns |
+| **Customers and markets** | Loyalty, CRM labels; IN/EU/US/UK/AE market locale; pickup storefront |
 
 Every row is implemented and covered by the repository's tests. Details: **[Modules](docs/MODULES.md)**.
 
@@ -157,6 +157,6 @@ The full table and what is not built yet: **[Intended use and limits](docs/INTEN
 
 <div align="center">
 
-<sub>Zyvor Retail is built by [Zyvor AI Labs](https://zyvor.dev), who also make [ZYVORA, the hospital OS](https://zyvorai.github.io/zyvor-zyvora-site/). Release 0.26.2 pilot. All screens use fictional data. No application source is published here.</sub>
+<sub>Zyvor Retail is built by [Zyvor AI Labs](https://zyvor.dev), who also make [ZYVORA, the hospital OS](https://zyvorai.github.io/zyvor-zyvora-site/). Release 0.29.0 pilot. All screens use fictional data. No application source is published here.</sub>
 
 </div>
