@@ -229,6 +229,7 @@ function Invoke-Retail {
 
   Say "Running: curl -fsSL $base/get.sh | sh -s -- $argText"
   $captured = New-Object System.Collections.Generic.List[string]
+  if ($env:RETAIL_GHCR_TOKEN) { $env:WSLENV = (@($env:WSLENV, 'RETAIL_GHCR_TOKEN/u', 'RETAIL_GHCR_USER/u') | Where-Object { $_ }) -join ':' }  # forward the private-image token into WSL without putting it on a command line
   & wsl.exe -d $name -e sh -c "curl -fsSL '$base/get.sh' | sh -s -- $argText" 2>&1 | ForEach-Object {
     $line = ([string]$_) -replace "`0", ''
     Write-Host $line

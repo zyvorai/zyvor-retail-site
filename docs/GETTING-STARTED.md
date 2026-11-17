@@ -75,3 +75,9 @@ Treat Zyvor Retail as a **pilot**. The core trading, stock, tax-invoice and ledg
 ## Tell us how it went
 
 [sales@zyvor.dev](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20feedback), or a **Feedback** issue here (never include customer data, passwords or payment details).
+
+## Access token (private image)
+
+The container image is private. Ask sales@zyvor.dev for a read-only token. The installer prompts for it once (hidden), signs in to ghcr.io, pulls the image and signs out.
+Unattended: `RETAIL_GHCR_TOKEN=... sh get.sh up --demo` (set the variable on the `sh` side of a pipe) or `--token-file path`. On Windows set `$env:RETAIL_GHCR_TOKEN` before running `get.ps1`;
+it is forwarded into WSL without appearing on a command line.
