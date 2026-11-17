@@ -50,3 +50,9 @@ Native desktop shell (Tauri + sidecar), deeper India GST worksheets (debit notes
 ## 0.25.0
 
 Invoice text paste → draft PO, local product photos, park sale with optional stock hold, per-supplier lead days in Suggestions, copy-only supplier reorder message. Schema **20**.
+
+## Desktop installers (private)
+
+The macOS (Apple silicon) DMG and the Windows setup are **pilot builds published only on a private release**, not on this public page, because they bundle the
+application. They are unsigned: macOS Gatekeeper and Windows SmartScreen will warn. Ask [sales@zyvor.dev](mailto:sales@zyvor.dev?subject=Zyvor%20Retail%20desktop%20installer)
+for access. Verified: macOS app on a Mac (all console pages, normal quit) and the Windows installer on a Windows 11 VM (install, launch, quit, restart). Not covered: Intel Macs and Windows 10.
