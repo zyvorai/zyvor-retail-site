@@ -43,3 +43,10 @@ Retail core plus switchable packs (Restaurant, Aggregators, HR, Tasks). Each row
 Live NIC/GSTN submission, live SoftPOS / bank / SMS / shipping / ESC-POS drivers, live Swiggy/Zomato and gift-card processors, live supplier EDI / CDP campaign sync, biometric clocks and statutory PF/ESI, auto-apply without a human click, Companies Act depreciation schedules, forecasting beyond Suggestions, PostgreSQL / application HA.
 
 Back to the [documentation index](README.md).
+
+## New in 0.31
+
+Vyapar-class billing and books (challans, proforma, recurring invoices, multi-unit, expenses, day book, GSTR-2/4), consent-checked WhatsApp/SMS/email
+messaging, QR and barcode labels, provider-ready adapters (e-invoice, payments, shipping, printers, OCR, cloud storage), statutory payroll,
+depreciation, forecasting with an 83-window festival calendar, and Tally/Busy/Vyapar history import. Adapters are built and tested offline but not yet
+verified against live providers.
