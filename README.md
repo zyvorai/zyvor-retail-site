@@ -22,6 +22,8 @@ This repository is the **public home of the Zyvor Retail website**. The applicat
 | **5** switchable capability packs | **5** staff roles, scoped to branch | **0** runtime packages, CDNs or build steps | **318** automated tests in the repository |
 |:---:|:---:|:---:|:---:|
 
+[Client overview (PDF)](docs/Zyvor-Retail-Client-Overview.pdf)
+
 ---
 
 ## Watch it
