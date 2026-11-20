@@ -1,0 +1,70 @@
+name: Publish trial image
+# Builds on the mini (self-hosted), pushes to a package scoped to this *public* repo
+# so anonymous get.sh pulls work without a private GHCR package.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Image tag (for example 0.11.0)
+        required: true
+        default: 0.11.0
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: [self-hosted, macOS, ARM64, retail]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build from private checkout on the mini and push public package
+        env:
+          VERSION: ${{ inputs.version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Private app checkout on the mini (same machine as this runner).
+          APP: /Users/mini/tt/tt/zyvor-retail
+          DEV_HOST: sus@212.8.248.187
+        run: |
+          set -euo pipefail
+          IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+          test -d "$APP"
+          REMOTE="/tmp/zyvor-retail-site-img-${GITHUB_RUN_ID}"
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new "$DEV_HOST" "rm -rf '$REMOTE' && mkdir -p '$REMOTE'"
+          rsync -az --delete \
+            --exclude .git --exclude data --exclude backups --exclude .venv \
+            --exclude node_modules --exclude dist --exclude '__pycache__' --exclude '*.db' \
+            "$APP"/ "${DEV_HOST}:${REMOTE}/"
+          ssh -o BatchMode=yes "$DEV_HOST" bash -s <<EOF
+          set -euo pipefail
+          cd '$REMOTE'
+          echo '$GH_TOKEN' | docker login ghcr.io -u '${{ github.actor }}' --password-stdin
+          if docker build --help 2>&1 | grep -q -- '--format'; then
+            docker build --format docker -t '${IMAGE}:${VERSION}' .
+          else
+            docker build -t '${IMAGE}:${VERSION}' .
+          fi
+          docker push '${IMAGE}:${VERSION}'
+          docker image inspect '${IMAGE}:${VERSION}' --format '{{.Id}} {{.Architecture}}'
+          rm -rf '$REMOTE'
+          EOF
+      - name: Make package public
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Package name for ghcr.io/zyvorai/zyvor-retail-site is "zyvor-retail-site"
+          NAME="zyvor-retail-site"
+          OWNER="${GITHUB_REPOSITORY_OWNER}"
+          for path in \
+            "/orgs/${OWNER}/packages/container/${NAME}/visibility" \
+            "/user/packages/container/${NAME}/visibility"
+          do
+            if gh api --method PUT -H "Accept: application/vnd.github+json" "$path" -f visibility=public; then
+              echo "Set public via $path"
+              exit 0
+            fi
+          done
+          # Nested name fallback
+          ENC="${OWNER}%2F${NAME}"
+          gh api --method PUT -H "Accept: application/vnd.github+json" \
+            "/orgs/${OWNER}/packages/container/${ENC}/visibility" -f visibility=public \
+            || echo "Set visibility in the UI: https://github.com/orgs/${OWNER}/packages/container/package/${NAME}"
