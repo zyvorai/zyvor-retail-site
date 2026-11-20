@@ -137,6 +137,12 @@ The full table and what is not built yet: **[Intended use and limits](docs/INTEN
 
 ---
 
+## Trial and pricing
+
+Ask sales@zyvor.dev for a free 30-day trial key (Zyvor Retail 0.32.0 and later; paste it under **Enter licence key**), then a one-year licence key. Soft enforcement: nothing is ever disabled and no data is touched. List prices, INR incl. 18% GST: store ₹5,999 per year (up to 3 registers; extra register ₹999 per year); Chain ₹4,999 per store per year, minimum 3 stores (₹14,997). Online checkout is not open yet.
+
+---
+
 ## Documentation
 
 | | |
